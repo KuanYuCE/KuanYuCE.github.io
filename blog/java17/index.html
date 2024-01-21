@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>Ky&#39;s Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java技術手冊學習記錄">
+  <meta name="author" content="ky">
+    
+  
+  <meta name="theme-name" content="liva-hugo" />
+  
+  <meta name="generator" content="Hugo 0.121.2">
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="https://kuanyuce.githib.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.githib.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.githib.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.githib.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="https://kuanyuce.githib.io/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://kuanyuce.githib.io/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="https://kuanyuce.githib.io/images/favicon.png " type="image/x-icon">
+
+  <!-- google analitycs -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'Your ID', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</head>
+<body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view" href="https://kuanyuce.githib.io"><img class="img-fluid"
+          src="https://kuanyuce.githib.io/images/logo.png" alt="Ky&#39;s Blog"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <div class="desktop-view">
+          <ul class="navbar-nav mr-auto">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/KuanYuCE"><i class="ti-github"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/kuanyuchen-a8a63216b/?locale=en_US"><i class="ti-linkedin"></i></a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <a class="navbar-brand mx-auto desktop-view" href="https://kuanyuce.githib.io"><img class="img-fluid"
+            src="https://kuanyuce.githib.io/images/logo.png" alt="Ky&#39;s Blog"></a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://kuanyuce.githib.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://kuanyuce.githib.io/about/">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://kuanyuce.githib.io/search" class="h-100">
+              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        
+        <a href="/categories/programming-language"
+          class="text-primary">Programming language</a>
+        
+        <h2>Java SE 17</h2>
+        <div class="mb-3 post-meta">
+          <span>By ky</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>21 January 2024</span>
+          
+        </div>
+        
+        <img src="https://kuanyuce.githib.io/images/post/javase17.png" class="img-fluid w-100 mb-4" alt="Java SE 17">
+        
+        <div class="content mb-5">
+          <h2 id="mvn-on-wsl">MVN ON WSL</h2>
+<p>如果透過apt install maven會裝到ubuntu版的maven而不是apache版的maven <a href="https://stackoverflow.com/questions/67481742/cant-run-maven-3-6-3-on-jdk7">參考</a>
+如果下mvn -v出現下列output</p>
+<pre tabindex="0"><code class="language-bash=" data-lang="bash=">mvn --version
+
+Apache Maven 3.6.3
+Maven home: /usr/share/maven
+Java version: 1.7.0_80, vendor: Oracle Corporation, runtime: /home/jqno/.jabba/jdk/1.7.80-oracle/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: &#34;linux&#34;, version: &#34;5.11.0-16-generic&#34;, arch: &#34;amd64&#34;, family: &#34;unix&#34;
+</code></pre><p>表示不是用apache maven</p>
+<p>以下output才是apache maven</p>
+<pre tabindex="0"><code class="language-bash=" data-lang="bash=">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: /Users/XXX/tools/maven
+Java version: 1.7.0_302, vendor: Azul Systems, Inc., runtime: /Users/khmarbaise/.sdkman/candidates/java/7.0.302-zulu/zulu-7.jdk/Contents/Home/jre
+Default locale: en_GB, platform encoding: UTF-8
+OS name: &#34;mac os x&#34;, version: &#34;10.14.6&#34;, arch: &#34;x86_64&#34;, family: &#34;mac&#34;
+</code></pre><p>如果不是用apache版的maven會出現
+<code>Maven JDK for importer should be WSL JDK</code> 或
+<code>Could not initialize class com.google.inject.internal.cglib.core.$MethodWrapper</code>問題</p>
+<h4 id="安裝sop">安裝sop</h4>
+<ol>
+<li>去<a href="https://maven.apache.org/download.cgi">官網</a>下載apache-maven-3.9.6-bin.tar.gz檔</li>
+<li>解壓縮<code>tar xzvf apache-maven-3.9.6-bin.tar.gz</code></li>
+<li>可執行<code>mvn --version</code>確認</li>
+<li>視情況看是否需要symlink or add 環境變數(PATH)</li>
+</ol>
+<h4 id="create-a-project">Create a Project</h4>
+<p><code>mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false</code></p>
+<h4 id="intellij-project-panel-doesnt-show-the-folders-and-files-are-looking-as-external">IntelliJ Project panel doesn&rsquo;t show the folders and files are looking as external</h4>
+<p>解決SOP:</p>
+<ol>
+<li>close the project</li>
+<li>remove it from Recent projects list</li>
+<li>shut down the IDE</li>
+<li>delete the .idea folder</li>
+<li>restart, open the project root folder with File &gt; Open</li>
+</ol>
+<h2 id="通用api">通用API</h2>
+<h3 id="logger">Logger</h3>
+<p>Java內建的logging套件包含三個元件: Logger/Handler/Formatter
+呼叫log()後，</p>
+<h2 id="chap11-thread">Chap11-Thread</h2>
+<h3 id="thread">Thread</h3>
+<p>要執行Thread程式，最簡單的方式就是定義一個class繼承Runnable interface，並呼叫start()開始執行:</p>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">package cc.openhome;
+
+public class Hare implements Runnable {
+    private boolean[] flags = {true, false};
+    private int totalStep;
+    private int step;
+
+    public Hare(int totalStep) {
+        this.totalStep = totalStep;
+    }
+
+    @Override
+    public void run() {
+        while(step &lt; totalStep) {
+            var isHareSleep = flags[((int) (Math.random() * 10)) % 2];
+            if(isHareSleep) {
+                System.out.println(&#34;兔子睡著了zzzz&#34;);
+            } else {
+                step += 2;
+                System.out.printf(&#34;兔子跑了 %d 步...%n&#34;, step);
+            }
+        }
+    }
+}
+
+
+package cc.openhome;
+
+public class TortoiseHareRace2 {
+    public static void main(String[] args) {
+        var tortoise = new Tortoise(10);
+        var hare = new Hare(10);
+        var tortoiseThread = new Thread(tortoise);
+        var hareThread = new Thread(hare);
+        tortoiseThread.start();
+        hareThread.start();
+    }
+}
+</code></pre><p>如果要跑多執行緒，可以將流程定義在Runnable的run()方法，或者繼承Thread類別，並重寫override run()方法。實作Runnable比較有彈性，因為類別還可以繼承其他類別。但若繼承了Thread，那該類別就是一種Thread了。</p>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// Runnable實例也可以透過Lambda表示來實作，例如:
+var someThread = new Thread() {
+    public void run() {
+      // implementation
+    }
+};
+
+// 可以改成
+
+var someThread = new Thread(() -&gt; {
+    //implementation
+});
+</code></pre><h3 id="synchronized--volatile">synchronized / volatile</h3>
+<p>每個物件都會有個intrinsic lock (內部鎖，或稱為monitor lock)。被標示為synchronized的區塊會被監控，任何thread要執行synchronized區塊都必須先取得物件的內部鎖。
+<strong>若在方法前加上synchronized，執行方法必須取得該實例的內部鎖</strong></p>
+<p>基於效率，thread通常會將變數的值cache到自己的記憶體空間中，完成操作再對變數進行更新。問題在快取的時機不一定，若有多個thread存取某個變數，有可能發生變數已經更新，但某些thread還在使用cache值。除了加上synchronized限制存取外，可以在變數上宣告volatile，被標示為volatile的變數，不允許thread快取。</p>
+<h3 id="等待與通知">等待與通知</h3>
+<p>wait()/notify()/notifyAll()是object定義的方法，用來控制thread釋放物件的內部鎖或通知thead要參加內部鎖的競爭</p>
+<p>執行synchronized的期間，如果呼叫該物件的wait()方法，thread會釋放內部鎖並進入物件的wait set而變成blocked狀態，此時其他thread就可以競爭內部鎖。放在wait set的thread不會參與cpu schedule。wait()可以指定等待時間，時間到thread會再度加入排班；然而若不指定或指定時間為0，thread會持續等待，直到被中斷<code>(interrupt())</code>或通知<code>(notify())</code>可以參加排班</p>
+<h3 id="並行api">並行API</h3>
+<p>使用Thread建立多執行緒程式，必須親自處理synchronized、物件鎖定、wait()/notify()/notifyAll()等細節，如果需要的是thread pool、讀寫鎖等高階操作，可以使用<strong>java.util.concurrent</strong>套件建立更穩固的併行應用程式</p>
+<h3 id="executor">Executor</h3>
+<p>Thread的建立與系統資源有關，如何建立thread、是否重複使用thread、何時銷毀thread、runnable何時排定給thread執行都是複雜的議題。因此java定義了<strong>java.util.concurrent.Executor</strong>的介面，目的在將Runnable的指定與執行分離，executor介面只定義了一個execute()方法</p>
+<pre tabindex="0"><code>package java.util.concurrent
+public interface Executor {
+  void execute(Runnable command);
+}
+</code></pre><p><strong><a href="https://givemepass.blogspot.com/2016/10/java-8-lambda.html">Lambda可以當成runnable!</a></strong></p>
+<p>範例:</p>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// Pages.java
+package cc.openhome;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.util.concurrent.*;
+import java.io.*;
+
+public class Pages {
+    private String[] urls;
+    private String[] fileNames;
+    private Executor executor;
+
+    public Pages(String[] urls, String[] fileNames, Executor executor) {
+        this.urls = urls;
+        this.fileNames = fileNames;
+        this.executor = executor;
+    }
+
+    public void download() {
+        for(var i = 0; i &lt; urls.length; i++) {
+            var url = urls[i];
+            var fileName = fileNames[i];
+            executor.execute(() -&gt; {
+                try {
+                    dump(openStream(url), new FileOutputStream(fileName));
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
+    }
+    
+    private InputStream openStream(String uri) throws Exception {
+        return HttpClient
+                 .newHttpClient()
+                 .send(
+                     HttpRequest.newBuilder(URI.create(uri)).build(), 
+                     BodyHandlers.ofInputStream()
+                 )
+                 .body();
+    }    
+
+    private void dump(InputStream src, OutputStream dest) throws IOException {
+        try(src; dest) { 
+            var data = new byte[1024];
+            var length = 0;
+            while((length = src.read(data)) != -1) {
+                dest.write(data, 0, length);
+            }
+        }
+    }
+}
+</code></pre><p>簡單定義一個Executor</p>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// 這個executor只會逐一下載
+package cc.openhome;
+
+import java.util.concurrent.Executor;
+
+public class DirectExecutor implements Executor {
+     public void execute(Runnable r) {
+         r.run();
+     }    
+}
+</code></pre><p>定義一個ThreadPerTaskExecutor</p>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// 這個executor會針對每個網頁啟動一個Thread進行下載
+package cc.openhome;
+
+import java.util.concurrent.Executor;
+
+public class ThreadPerTaskExecutor implements Executor {
+     public void execute(Runnable r) {
+         new Thread(r).start();
+     }
+}
+</code></pre><p>也可以搭配threadpool使用</p>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">package cc.openhome;
+
+import java.util.concurrent.Executors;
+
+public class Download3 {
+    public static void main(String[] args) {
+        String[] urls = {
+            &#34;https://openhome.cc/Gossip/Encoding/&#34;,
+            &#34;https://openhome.cc/Gossip/Scala/&#34;,
+            &#34;https://openhome.cc/Gossip/JavaScript/&#34;,
+            &#34;https://openhome.cc/Gossip/Python/&#34;
+        };
+        
+        String[] fileNames = {
+            &#34;Encoding.html&#34;,
+            &#34;Scala.html&#34;,
+            &#34;JavaScript.html&#34;,
+            &#34;Python.html&#34;
+        };
+
+        var executorService = Executors.newCachedThreadPool();
+        new Pages(urls, fileNames, executorService).download();
+        executorService.shutdown();
+    }
+}
+</code></pre><h2 id="java8之後的好用方法">Java8之後的好用方法</h2>
+<h3 id="double-colon-java8">double colon(::)-java8</h3>
+<ul>
+<li>Method Reference</li>
+<li>避免重複撰寫Lambda運算式, 同時能讓程式碼更為清楚</li>
+</ul>
+<pre tabindex="0"><code>Arrays.sort(names, (name1, name2)-&gt;StringOrder.byLength(name1, name2));
+
+// 可改為
+Arrays.sort(names, StringOrder::byLength);
+</code></pre><h3 id="of用法-java9">of用法-java9</h3>
+<blockquote>
+<p>可以簡單看成建立List, Map, Set實例的便捷方法</p>
+</blockquote>
+<p>List接口，Set接口，Map接口：裡面增加了一個靜態的方法of，可以給集合一次性添加多個元素 <code>static &lt;E&gt; List&lt;E&gt; of (E...elements)</code></p>
+<ul>
+<li>使用前提： 當集合中存儲的元素個數已經確定了，不再改變時使用。</li>
+<li>注意：
+<ol>
+<li>of方法只適用於List接口，Set接口，Map接口，不適用於接口的實現類</li>
+<li>of方法的返回值是一個不能改變的集合，集合不能再使用add,put方法添加元素，會拋出異常</li>
+<li>Set接口和Map接口在調用of方法的時候，不能有重覆的元素，否則會拋出異常</li>
+</ol>
+</li>
+</ul>
+<h3 id="lombok-vs-record-vs-pojo">lombok vs record vs pojo</h3>
+<p><a href="https://klab.tw/2023/01/java-16-record-and-lombok-comparison/">參考</a></p>
+<p>值得注意的是record定義的資料載體可以透過<code>&lt;record&gt;::&lt;attribute&gt;</code>去拿到該record的值</p>
+<p>通常會和of()以及stream()一起使用</p>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public class Demo {
+        public static void main(String[] args) {
+
+            var employees = List.of(
+                    new Employee(&#34;Justin&#34;, 39, Gender.MALE),
+                    new Employee(&#34;Monica&#34;, 36, Gender.FEMALE),
+                    new Employee(&#34;Irene&#34;, 6, Gender.FEMALE)
+            );
+
+            var sum = employees.stream()
+                    .filter(employee -&gt; employee.gender() == Gender.MALE)
+                    .mapToInt(Employee::age)
+                    .sum();
+
+            var average = employees.stream()
+                    .filter(employee -&gt; employee.gender() == Gender.MALE)
+                    .mapToInt(Employee::age)
+                    .average()
+                    .getAsDouble();
+
+            var max = employees.stream()
+                    .filter(employee -&gt; employee.gender() == Gender.MALE)
+                    .mapToInt(Employee::age)
+                    .max()
+                    .getAsInt();
+
+            List.of(sum, average, max).forEach(out::println);
+        }
+        
+    enum Gender { FEMALE, MALE }
+
+    record Employee(String name, Integer age, Gender gender) {}
+}
+</code></pre><h3 id="text-block---java15">text block - java15</h3>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">String json = &#34;{\n&#34; +
+        &#34;  \&#34;array\&#34;: [\n&#34; +
+        &#34;    1,\n&#34; +
+        &#34;    2,\n&#34; +
+        &#34;    3\n&#34; +
+        &#34;  ],\n&#34; +
+        &#34;  \&#34;boolean\&#34;: true,\n&#34; +
+        &#34;  \&#34;color\&#34;: \&#34;gold\&#34;,\n&#34; +
+        &#34;  \&#34;null\&#34;: null,\n&#34; +
+        &#34;  \&#34;number\&#34;: 123,\n&#34; +
+        &#34;  \&#34;object\&#34;: {\n&#34; +
+        &#34;    \&#34;a\&#34;: \&#34;b\&#34;,\n&#34; +
+        &#34;    \&#34;c\&#34;: \&#34;d\&#34;\n&#34; +
+        &#34;  },\n&#34; +
+        &#34;  \&#34;string\&#34;: \&#34;Hello World\&#34;\n&#34; +
+        &#34;}&#34;;
+
+String json = &#34;&#34;&#34;
+{
+  &#34;b1oolean&#34;: true,
+  &#34;color&#34;: &#34;gold&#34;,
+  &#34;number&#34;: 123,
+  &#34;string&#34;: &#34;Hello World&#34;
+}
+&#34;&#34;&#34;;
+</code></pre><h3 id="map-vs-maptoint">map vs mapToInt</h3>
+<ul>
+<li>兩者返回的數據類型不同
+<ul>
+<li>map返回Stream object
+<ul>
+<li>就只是返回一個通用的stream類型, 可以繼續接map or reduce or filter..等 Stream&lt;T&gt;方法</li>
+</ul>
+</li>
+<li>mapToInt返回IntStream
+<ul>
+<li>IntStream提供了sum(), average(), max(), min()等方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="record">Record</h3>
+<p><a href="https://cloud.tencent.com/developer/article/2017497">參考</a>
+大致說來，Kotlin中叫data class，Java中叫Record Class這個名稱不太一樣以外，其它的都是極為類似的。</p>
+<p>我們用Java 17中的Record Class 來重寫上述這個類，代碼是這樣的：</p>
+<p><code>public record EmployeeDTO(String name,String idCard,int age){}</code>
+是不是幾乎和Kotlin中的data class一模一樣呢?</p>
+<p>是的，就是這麽回事，它簡化了數據類的定義。所以如果你非常厭煩Java數據類的重覆定義，與其去使用lombok這種侵入性非常強的第三方庫，還不如升級使用Java 17。</p>
+<h4 id="record-class需要關注的點">record class需要關注的點</h4>
+<p>當然，關於record class，仍然有一些基本原則你需要知道。</p>
+<blockquote>
+<p>不能在record類的body中添加屬性，屬性只能定義在類的括號後面（稱為header）</p>
+</blockquote>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+    //這是不允許的
+    private String description;
+    
+}
+</code></pre><blockquote>
+<p>可以在record類中添加靜態屬性與方法</p>
+</blockquote>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+    //這是允許的
+    private static System.Logger logger = System.getLogger(EmployeeDTO.class.getName());
+}
+</code></pre><blockquote>
+<p>可以添加額外的類方法，這是允許的</p>
+</blockquote>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+    //這是允許的
+    public String toJson(){
+        //...
+        return &#34;&#34;;
+    }
+}
+</code></pre><p>比如，你可以添加一個方法，有時候我們需要將數據對象轉換為JSON來傳輸或存儲，那就添加一個toJson方法就好了.</p>
+<blockquote>
+<p>可以覆蓋默認生成的一些東西</p>
+</blockquote>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+    //這是允許的
+    public int getAge(){
+        return age;
+    }
+}
+</code></pre><blockquote>
+<p>可以在方法中定義Local Record Classes</p>
+</blockquote>
+<p>在方法內部，你可以定義一個局部本地的record類</p>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public void calculateLocation(double x,double y){
+    //定義一個本地record類
+    record Point(double x, double y) {}
+
+    var point = new Point(x,y);
+    //...
+    }
+</code></pre><p>這個在一些局部方法中需要封裝一些參數時，又沒必要把這個類定義在外面時非常有用。</p>
+<blockquote>
+<p>Java中的所有record類，都默認實現了Record接口</p>
+</blockquote>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">@Test
+void testRecord(){
+    record Point(double x,double y){}
+    var point = new Point(0,0);
+    //Point是實現了Record接口的
+    Assertions.assertTrue(point instanceof Record);
+}
+</code></pre><h2 id="generic">Generic</h2>
+<h3 id="static-method">Static method</h3>
+<p>要宣告靜態方法的泛型時, 記得要在static後面加上<!-- raw HTML omitted -->類別型態</p>
+<p>原因是因為泛型這機制其實是runtime的時候動態的幫你轉換型別</p>
+<p>所以實際上你在宣告(使用)的時候, 會先寫好型別,</p>
+<p>接著在new object的時候就會根據你宣告的型別做轉換</p>
+<p>但問題是靜態方法是在編譯期轉換的, 此時compiler並不知道實際的類別是什麼(不知道怎麼轉換)</p>
+<p>因此才需要在static後面接上型別告訴compiler編譯期要怎麼轉換</p>
+<blockquote>
+<p>如果想在类的静态方法里上使用泛型, 以及如何在调用的时候, 传入泛型类型呢?
+静态方法在 static 关键字之后, 声明泛型:
+<code>public static &lt;R&gt; Builder&lt;R&gt; builder() {...}</code></p>
+</blockquote>
+<h3 id="泛型的來源原理">泛型的來源、原理</h3>
+<ul>
+<li>Java 會在 編譯期間擦除(type erasure) 所有的泛型訊息，這樣就可以讓 JVM 使用相同的字節碼而不必新增，在 JVM Runtime 時就不存在所謂的泛型訊息 (後面會介紹泛型擦除)</li>
+</ul>
+<h3 id="泛型副作用">泛型副作用</h3>
+<ul>
+<li>不能使用基本數據類型 (byte、char、short、int、long、double)，因為擦除後會轉換為 Object 類型</li>
+<li>不能使用 instanceof 運算符號，同樣是因為類型擦除後所帶來的副作用，會導致無法判別</li>
+<li>擦拭後都是 Object 類型，沒得判斷</li>
+<li>不能使用在靜態，泛型創建對象時才能確定，但靜態方法、參數，是不用加載就可以使用 (泛型方法則可以，因為泛型方法是呼叫後才加載)</li>
+</ul>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// 假如我们定义一个泛型类Generic
+class Generic&lt;T&gt; {
+    private T obj;
+
+    public Generic(T o) {
+        obj = o;
+    }
+    public T getObj() {
+        return obj;
+    }
+}  
+    
+//那么Java编译后的bytecode中Generic相当于这样的
+class Generic {
+    private Object obj;
+
+    public Generic(Object o) {
+        obj = o;
+    }
+    public Object getObj() {
+        return obj;
+    }
+}
+  
+</code></pre><h3 id="java---偽泛型">Java - 偽泛型</h3>
+<ul>
+<li>
+<p>Java / kotlin 虛擬機其實內部並無泛型，並不是真正的泛型 ，JDK 5 才有泛型，為了向上兼容，才會演變成 ++偽泛型++</p>
+<blockquote>
+<p>在編譯後的字節碼中以替換成原生類型(Raw Type)，並在相應的第方插入強制轉型代碼，所以對於運行期的 Java 語言來說 List<!-- raw HTML omitted --> and List<!-- raw HTML omitted --> 就是同一類別，Java 語言中的泛型實現方法稱為 類型擦除，基於這種方法實現的泛型是偽泛型</p>
+</blockquote>
+</li>
+<li>
+<p>在泛型中並不是所有的擦除都會變成 Object 的，當泛型有限制性，Test<!-- raw HTML omitted -->，則會被擦除成 Apple</p>
+</li>
+</ul>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">List list = new ArrayList&lt;Integer\&gt;();
+List&lt;String&gt; list2 = list;
+</code></pre><blockquote>
+<p>擦除過後 ArrayList<!-- raw HTML omitted --> 轉為 Array List，List<!-- raw HTML omitted --> 轉為 List</p>
+</blockquote>
+<p><a href="https://hackmd.io/@AlienHackMd/rkGtP5TeI">參考</a></p>
+
+        </div>
+
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="text-capitalize">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center mb-5">
+        <a href="https://kuanyuce.githib.io"><img src="https://kuanyuce.githib.io/images/logo.png" alt="Ky&#39;s Blog"></a>
+      </div>
+               
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Contact Me</h6>
+        <ul class="list-unstyled">
+          
+                     
+          <li class="mb-3"><i class="ti-location-pin mr-3 text-primary"></i>HsinChu, Taiwan</li>
+          
+                     
+          <li class="mb-3"><a class="text-dark" href="mailto:kuanyu.connect@gmail.com"><i
+                class="ti-email mr-3 text-primary"></i>kuanyu.connect@gmail.com</a>
+          
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Social Contacts</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="https://github.com/KuanYuCE">github</a></li>
+          
+          <li class="mb-3"><a class="text-dark" href="https://www.linkedin.com/in/kuanyuchen-a8a63216b/?locale=en_US">linkedin</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Categories</h6>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/go-language/">Go language</a>
+          </li>
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/programming-language/">Programming language</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <h6 class="mb-4">Quick Links</h6>
+        <ul class="list-unstyled">
+          
+          <li class="mb-3"><a class="text-dark" href="https://kuanyuce.githib.io/about/">About</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-12 border-top py-4 text-center">
+        | copyright © 2021 <a href="https://themefisher.com/hugo-themes/">Themefisher</a> All Rights Reserved |
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var indexURL = "https://kuanyuce.githib.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://kuanyuce.githib.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://kuanyuce.githib.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://kuanyuce.githib.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://kuanyuce.githib.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://kuanyuce.githib.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://kuanyuce.githib.io/plugins/search/mark.js"></script>
+
+<script src="https://kuanyuce.githib.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://kuanyuce.githib.io/js/script.min.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<div id="js-cookie-box" class="cookie-box cookie-box-hide">
+	This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button" class="btn btn-sm btn-primary ml-2">I Accept</span>
+</div>
+<script>
+	(function ($) {
+		const cookieBox = document.getElementById('js-cookie-box');
+		const cookieButton = document.getElementById('js-cookie-button');
+		if (!Cookies.get('cookie-box')) {
+			cookieBox.classList.remove('cookie-box-hide');
+			cookieButton.onclick = function () {
+				Cookies.set('cookie-box', true, {
+					expires:  2 
+				});
+				cookieBox.classList.add('cookie-box-hide');
+			};
+		}
+	})(jQuery);
+</script>
+
+
+<style>
+.cookie-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 9999;
+  padding: 1rem 2rem;
+  background: rgb(71, 71, 71);
+  transition: all .75s cubic-bezier(.19, 1, .22, 1);
+  color: #fdfdfd;
+}
+
+.cookie-box-hide {
+  display: none;
+}
+</style>
+</body>
+</html>
