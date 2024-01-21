@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming Language on Ky&#39;s Blog</title>
-    <link>https://kuanyuce.githib.io/categories/programming-language/</link>
+    <link>https://kuanyuce.github.io/categories/programming-language/</link>
     <description>Recent content in Programming Language on Ky&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Sun, 21 Jan 2024 23:07:47 +0800</lastBuildDate>
-    <atom:link href="https://kuanyuce.githib.io/categories/programming-language/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kuanyuce.github.io/categories/programming-language/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java SE 17</title>
-      <link>https://kuanyuce.githib.io/blog/java17/</link>
+      <link>https://kuanyuce.github.io/blog/java17/</link>
       <pubDate>Sun, 21 Jan 2024 23:07:47 +0800</pubDate>
-      <guid>https://kuanyuce.githib.io/blog/java17/</guid>
+      <guid>https://kuanyuce.github.io/blog/java17/</guid>
       <description>MVN ON WSL 如果透過apt install maven會裝到ubuntu版的maven而不是apache版的maven 參考 如果下mvn -v出現下列output&#xA;mvn --version Apache Maven 3.</description>
     </item>
   </channel>
