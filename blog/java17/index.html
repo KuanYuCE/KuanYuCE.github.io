@@ -141,50 +141,7 @@
         <img src="https://kuanyuce.github.io/images/post/javase17.png" class="img-fluid w-100 mb-4" alt="Java SE 17">
         
         <div class="content mb-5">
-          <h2 id="mvn-on-wsl">MVN ON WSL</h2>
-<p>如果透過apt install maven會裝到ubuntu版的maven而不是apache版的maven <a href="https://stackoverflow.com/questions/67481742/cant-run-maven-3-6-3-on-jdk7">參考</a>
-如果下mvn -v出現下列output</p>
-<pre tabindex="0"><code class="language-bash=" data-lang="bash=">mvn --version
-
-Apache Maven 3.6.3
-Maven home: /usr/share/maven
-Java version: 1.7.0_80, vendor: Oracle Corporation, runtime: /home/jqno/.jabba/jdk/1.7.80-oracle/jre
-Default locale: en_US, platform encoding: UTF-8
-OS name: &#34;linux&#34;, version: &#34;5.11.0-16-generic&#34;, arch: &#34;amd64&#34;, family: &#34;unix&#34;
-</code></pre><p>表示不是用apache maven</p>
-<p>以下output才是apache maven</p>
-<pre tabindex="0"><code class="language-bash=" data-lang="bash=">Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
-Maven home: /Users/XXX/tools/maven
-Java version: 1.7.0_302, vendor: Azul Systems, Inc., runtime: /Users/khmarbaise/.sdkman/candidates/java/7.0.302-zulu/zulu-7.jdk/Contents/Home/jre
-Default locale: en_GB, platform encoding: UTF-8
-OS name: &#34;mac os x&#34;, version: &#34;10.14.6&#34;, arch: &#34;x86_64&#34;, family: &#34;mac&#34;
-</code></pre><p>如果不是用apache版的maven會出現
-<code>Maven JDK for importer should be WSL JDK</code> 或
-<code>Could not initialize class com.google.inject.internal.cglib.core.$MethodWrapper</code>問題</p>
-<h4 id="安裝sop">安裝sop</h4>
-<ol>
-<li>去<a href="https://maven.apache.org/download.cgi">官網</a>下載apache-maven-3.9.6-bin.tar.gz檔</li>
-<li>解壓縮<code>tar xzvf apache-maven-3.9.6-bin.tar.gz</code></li>
-<li>可執行<code>mvn --version</code>確認</li>
-<li>視情況看是否需要symlink or add 環境變數(PATH)</li>
-</ol>
-<h4 id="create-a-project">Create a Project</h4>
-<p><code>mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false</code></p>
-<h4 id="intellij-project-panel-doesnt-show-the-folders-and-files-are-looking-as-external">IntelliJ Project panel doesn&rsquo;t show the folders and files are looking as external</h4>
-<p>解決SOP:</p>
-<ol>
-<li>close the project</li>
-<li>remove it from Recent projects list</li>
-<li>shut down the IDE</li>
-<li>delete the .idea folder</li>
-<li>restart, open the project root folder with File &gt; Open</li>
-</ol>
-<h2 id="通用api">通用API</h2>
-<h3 id="logger">Logger</h3>
-<p>Java內建的logging套件包含三個元件: Logger/Handler/Formatter
-呼叫log()後，</p>
-<h2 id="chap11-thread">Chap11-Thread</h2>
-<h3 id="thread">Thread</h3>
+          <h3 id="thread">Thread</h3>
 <p>要執行Thread程式，最簡單的方式就是定義一個class繼承Runnable interface，並呼叫start()開始執行:</p>
 <pre tabindex="0"><code class="language-java=" data-lang="java=">package cc.openhome;
 
