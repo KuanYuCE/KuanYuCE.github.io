@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>Ky&#39;s Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MySQL學習記錄">
+  <meta name="author" content="ky">
+    
+  
+  <meta name="theme-name" content="liva-hugo" />
+  
+  <meta name="generator" content="Hugo 0.121.2">
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://kuanyuce.github.io/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="https://kuanyuce.github.io/images/favicon.png " type="image/x-icon">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JW5F1D6DVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JW5F1D6DVR');
+</script>
+
+</head>
+<body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view" href="https://kuanyuce.github.io/"><img class="img-fluid"
+          src="https://kuanyuce.github.io/images/logo.ico" alt="Ky&#39;s Blog"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <div class="desktop-view">
+          <ul class="navbar-nav mr-auto">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/KuanYuCE"><i class="ti-github"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/kuanyuchen-a8a63216b/?locale=en_US"><i class="ti-linkedin"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.cakeresume.com/kuan-yu-chen-301ac2"><i class="ti-id-badge"></i></a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <a class="navbar-brand mx-auto desktop-view" href="https://kuanyuce.github.io/"><img class="img-fluid"
+            src="https://kuanyuce.github.io/images/logo.ico" alt="Ky&#39;s Blog"></a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://kuanyuce.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://kuanyuce.github.io/about/">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://kuanyuce.github.io//search" class="h-100">
+              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        
+        <a href="/categories/database"
+          class="text-primary">Database</a>
+        
+        <h2>MySQL隨筆</h2>
+        <div class="mb-3 post-meta">
+          <span>By ky</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>22 January 2024</span>
+          
+        </div>
+        
+        <div class="content mb-5">
+          <h2 id="啟動mysql伺服器的方式">啟動MySQL伺服器的方式</h2>
+<ol>
+<li>mysqld</li>
+<li>mysqld_safe</li>
+<li>mysql.server</li>
+<li>mysqld_multi</li>
+</ol>
+<h2 id="檢查char-set">檢查Char set</h2>
+<p>編碼: 字元(看得懂的字) -&gt; 二進位資料
+解碼: 二進位資料 -&gt; 字元
+一般來說，用戶端encode request string的時候使用的charset和OS當前用的charset會一致</p>
+<pre tabindex="0"><code class="language-bash=" data-lang="bash="># 優先級: LC_ALL &gt; LC_CTYPE &gt; LANG
+# 呼叫的系統函數為nl_langinfo(CODESET)
+echo $LC_ALL
+echo $LC_CTYPE
+echo $LANG
+
+# windows中可以在terminal輸入chcp查到字碼頁 (內碼表)
+# windows把字元集稱為code page，翻譯成字碼頁或內碼表
+# 呼叫的系統函數為GetConsoleCP
+# 可以用default-character-set指定編碼，(linux不適用)
+</code></pre><p>server會使用character-set-client這個變數指定的charset進行編碼</p>
+<table>
+<thead>
+<tr>
+<th>系統變數</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>character-set-client</td>
+<td>Server認為request是按照這個變數指定的charset進行編碼</td>
+</tr>
+<tr>
+<td>character-set-connection</td>
+<td>Server在處理request時，會把請求的byte string(sequence?) 從character-set-client 轉為character-set-connection</td>
+</tr>
+<tr>
+<td>character-set-results</td>
+<td>Server採用這個變數指定的charset對回傳給client端的字串進行編碼</td>
+</tr>
+</tbody>
+</table>
+<p>上面三個變數的作用範圍都是SESSION級</p>
+<p><img src="https://i.imgur.com/SY66xaC.png" alt=""></p>
+<h3 id="character-set-client-vs-character-set-connection">character-set-client vs character-set-connection</h3>
+<p>為什麼需要character-set-connection? 考慮一種情況
+<code>select 'a' = 'A'</code>
+這種情況下因為不知道這兩個字串是採用什麼字元集編碼，也不知道比較的規則是什麼
+這時候character-set-connection就發揮作用了，他不管client端用什麼字元集規則，反正我統一轉換成character-set-connection設定的字元集去編碼，同時還有一個配套的系統變數collation_connetcion，這樣我們就可以知道比較這些字串該用哪些規則</p>
+<h2 id="單表查詢">單表查詢</h2>
+<p>有的查詢可用index merge的方式利用多個Index完成查詢，具體方式有三種:</p>
+<ol>
+<li>intersection index merge</li>
+<li>union index merge</li>
+<li>sort-union index merge</li>
+</ol>
+<h2 id="join">Join</h2>
+<h3 id="join過程">Join過程</h3>
+<p>以下列SQL為例:</p>
+<pre tabindex="0"><code class="language-mysql=" data-lang="mysql=">SELECT * FROM t1, t2 WHERE t1.m1&gt;1 AND t1.m1 = t2.m2 AND t2.n2 &lt; &#39;d&#39;
+</code></pre><ol>
+<li>確定第一章要查詢的表，稱為驅動表</li>
+<li>從驅動表每獲取一筆紀錄，都需要到t2表中尋找匹配的資料</li>
+</ol>
+<p>:::info
+並不是將所有滿足條件的驅動表資料先查詢出來放到一個地方，然後在去被驅動表中查詢，而是每獲得一筆驅動表資料，就立即到被驅動表中尋找匹配的紀錄
+:::</p>
+<ul>
+<li>INNER JOIN: 對於inner join的兩張表，若驅動表中的紀錄在被驅動表中找不到匹配的紀錄，則該紀錄不會被加到最後的結果集中</li>
+<li>OUTER JOIN: 對於outer join的兩張表，即使驅動表中的紀錄在被驅動表中沒有匹配的紀錄，也仍需要加入到結果集
+<ul>
+<li>有時候我們不想把驅動表的全部紀錄都加入到最後的結果集怎辦?
+<ul>
+<li>把過濾條件分成兩種: ON跟WHERE
+<ul>
+<li>ON: 如果無法在被驅動表中找到匹配ON子句中過濾條件的紀錄，那麼該驅動表紀錄仍會被加入到結果集中，對應的欄位會使用NULL填充</li>
+<li>WHERE: 凡不符合WHERE子句中過濾條件的紀錄一律不會被加入到最後的結果集中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="加速的方式">加速的方式</h4>
+<ol>
+<li>Join Buffer: 執行Join前申請一塊固定大小的memory，先把驅動表結果集中的紀錄裝一部份到Join buffer中，然後開始掃描被驅動表，每一筆被驅動表的紀錄一次性與join buffer中的多筆驅動表紀錄進行匹配</li>
+<li>Index</li>
+</ol>
+<h2 id="子查詢最佳化">子查詢最佳化</h2>
+<ul>
+<li>按照返回的結果集區分子查詢種類:
+<ul>
+<li>純量子查詢: 只返回單一值的子查詢，例如<code>SELECT (SELECT m1 FROM t1 LIMIT 1)</code></li>
+<li>行子查詢: 返回一筆紀錄的子查詢 (返回一個row)</li>
+<li>列子查詢: 返回一個column的子查詢</li>
+<li>表子查詢: 子查詢既包含多筆row又包含很多個列</li>
+</ul>
+</li>
+<li>按與外層查詢的關係來區分:
+<ul>
+<li>不相關子查詢: 子查詢可以單獨運行出結果</li>
+<li>相關子查詢: 子查詢的執行需要依賴於外層查詢的值</li>
+</ul>
+</li>
+</ul>
+<h3 id="in子查詢最佳化">IN子查詢最佳化</h3>
+<p>對不相關的IN子查詢來說，如果子查詢結果集中的紀錄比數很少，其實可以把子查詢和外層查詢分別看成兩個單獨的單表查詢。但是如果子查詢的結果集太多，會導致兩個問題:</p>
+<ul>
+<li>結果集太多，記憶體中放不下</li>
+<li>對外層查詢來說，子查詢的結果集太多，則表示IN子句中的參數特別多，將會導致:
+<ul>
+<li>無法有效使用索引，只能對外層查詢進行全表掃描</li>
+<li>對外層查詢執行權表掃描時，如果IN子句中的參數太多，會導致在檢測一筆紀錄的IN運算式是否為TRUE時花費太多的時間
+<ul>
+<li>衍生觀念: <a href="https://eeluck.pixnet.net/blog/post/27559378">IN vs Exists</a></li>
+<li>結論: 外(表)資料大內(表)資料小=IN，外(表)資料小內(表)資量大=EXISTS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一般而言，子查詢的結果集不致於大的離譜，所以預設會為它建立based-on memory儲存引擎(storage engine)的臨時表，並且會為該表建立hash index
+<ul>
+<li>如果子查詢的結果集太大，超過了系統變數tmp_table_size或max_heap_table_size，臨時表會轉成用based-on disk的storage engine來保存結果集中的紀錄，index類型也會變成B+ tree index</li>
+</ul>
+</li>
+</ul>
+<p>時間關係來不及補上完整筆記，在此先記錄幾個名詞:</p>
+<ul>
+<li>物化(materialize): 將子查詢結果集中的紀錄保存到臨時表的過程</li>
+<li>子查詢轉join (<strong>semi-join</strong>)
+<ul>
+<li>直接轉會出現問題: join會導致結果集出現duplicate資料 (參考page14-22)</li>
+</ul>
+</li>
+<li>延遲物化</li>
+<li>半連結查詢策略
+<ul>
+<li>Table pullout</li>
+<li>duplicate weedout</li>
+<li>looseScan</li>
+<li>semi-join materialization</li>
+<li>firstMatch</li>
+</ul>
+</li>
+<li>如果IN子查詢不能轉為半連接查詢，最佳化工具從兩種策略找出成本低的方式執行子查詢
+<ul>
+<li>先將子查詢物化，再執行查詢</li>
+<li>執行IN到EXISTS的轉換</li>
+</ul>
+</li>
+</ul>
+<h2 id="innodb-buffer-pool">InnoDB Buffer pool</h2>
+<h3 id="什麼是buffer-pool">什麼是Buffer pool</h3>
+<p>為了快取disk中的page，InnoDB工程師在MySQL server啟動時就向作業系統要了一片連續的記憶體，這片記憶體就叫<strong>Buffer pool</strong></p>
+<h3 id="buffer-pool內部組成">Buffer pool內部組成</h3>
+<ol>
+<li>控制區塊: 為了管理緩衝頁，innoDB工程師為每個緩衝頁都建立了一些控制資訊，包含該頁所屬的表格空間編號、頁號、緩衝頁在Buffer pool中的位址、linkedlist節點資訊等等</li>
+<li>緩衝頁: Buffer pool對應的記憶體被劃分為許多page，這些page和innoDB表格空間用的大小一樣都是16KB</li>
+</ol>
+<p>系統會以<strong>表格空間編號</strong>+<strong>頁號</strong>當成key，緩衝頁<strong>控制區塊的位址</strong>就是對應的value來找到該緩衝頁</p>
+<h4 id="buffer-pool-instance示意圖">Buffer pool instance示意圖</h4>
+<p><img src="https://i.imgur.com/nyudhn9.png" alt=""></p>
+<ul>
+<li>free list: 紀錄Buffer pool中的哪些page是可用的(把所有空閒的緩衝頁對應的控制區塊當成一個節點放到此linked list中，所以這是一個由控制區塊組成的Linked list)</li>
+<li>flush list: 儲存髒頁的linked list，凡是被修改過的緩衝頁對應的控制區塊都會被當成一個節點被加入此linkedlist (不可能每次都把所有的緩衝頁刷新到磁碟中，效能會很差)</li>
+<li>LRU list: Buffer pool滿的時候，要踢掉一些緩衝頁，透過LRU紀錄哪些緩衝頁很少被使用，優先踢掉那些緩衝頁對應的控制區塊
+<ul>
+<li>如果該頁不在Buffer pool中，在把該頁從disk載入到Buffer pool時，把該緩衝頁對應的控制區塊作為節點塞到LRU的頭部</li>
+<li>如果該頁本來就在Buffer pool中(本就被已經被載入)，則直接把該頁對應的控制區塊移動到LRU的頭部</li>
+</ul>
+</li>
+</ul>
+<p>:::info
+<strong>LRU可能遇到的問題</strong></p>
+<ol>
+<li>InnoDB有預先讀取(read ahead)機制，若預讀的資料都沒有用到的話會把LRU上原本的資料都淘汰掉，大幅降低Buffer pool命中率</li>
+<li>進行全表掃描會把原本在Buffer pool存取頻率高的頁給淘汰掉</li>
+</ol>
+<ul>
+<li>為解決上述問題，InnoDB工程師把LRU按比例(63/37)比例分為young區(熱資料)以及old區(冷資料)，搭配以下解法:</li>
+</ul>
+<ol>
+<li>
+<p>初次載入Buffer pool的緩衝頁會放到old區的頭部，如此一來預讀到Buffer pool但後續沒用到的頁就會逐漸從old區被逐出，同時不影響young區中使用頻率高的緩衝頁</p>
+</li>
+<li>
+<p>old區的資料載入後只要被讀取就會被加到young區，InnoDB工程師定義一個時間間格，只要後續access與第一次access的時間在某個時間間隔內，該頁就不會從old區被移到young區頭部</p>
+</li>
+<li>
+<p>進一步優化: 如果每存取一個緩衝頁就要把它移動到young區頭部，負擔太大(畢竟young區是熱資料，常被存取)，因此InnoDB工程師提出一些優化策略，例如存取的緩衝頁位於young區1/4區域的後面時，才會被移到LRU的頭部
+:::</p>
+</li>
+</ol>
+<h3 id="刷新髒頁到磁碟">刷新髒頁到磁碟</h3>
+<p>刷新的方式有兩種:</p>
+<ol>
+<li>BUF_FLUSH_LRU: 從LRU上的冷資料刷一部份頁到磁碟</li>
+<li>BUF_FLUSH_LIST: 從Flush上刷一部份頁到磁碟</li>
+</ol>
+<h3 id="多個buffer-pool實例">多個Buffer Pool實例</h3>
+<p>在Buffer Pool特別大且多個thread存取量高的情況下，單一Buffer Pool可能會影響請求的處理速度。(在multithread環境下存取Buffer Pool的各個list都需要加鎖處理)
+所以在Buffer Pool特別大的時候可以把他們拆分成許多小的Buffer Pool，每個Buffer Pool都稱為一個實例</p>
+<h4 id="innodb_buffer_pool_chunk_size">innodb_buffer_pool_chunk_size</h4>
+<p>每次調整Buffer Pool大小都需要向OS要一塊連續的記憶體空間，然後將舊Buffer Pool上的內容複製到新的空間，很耗時。解法是以chunk為單位向OS申請空間，如此才能達到Server運行期間調整Buffer Pool大小卻不影響太多效能</p>
+<h2 id="redo-log">Redo log</h2>
+<h3 id="mini-trancsactionmtr">Mini-Trancsaction(MTR)</h3>
+<ul>
+<li>樂觀插入(insert)</li>
+<li>悲觀插入(insert): insert資料時需要進行page split</li>
+</ul>
+<p>向某個B+樹插入一筆record的過程必須是原子的，不能插了一半就停止。
+例如在悲觀插入中，新的page已經分配下去，資料也從原本的page複製過去了，新的record也插入到Page中了，但是內節點(internal node，紀錄頁號和頁的紀錄中最小的主鍵值)卻沒有插入一筆目錄項的record，這樣這個插入過程就是不完整的，會形成一顆不正確的B+樹</p>
+<h3 id="redo-log-block">redo log block</h3>
+<ul>
+<li>MTR產生的redo log檔會放在大小為512 bytes的page中，這個page被稱為block</li>
+<li>寫入redo記錄檔的時候不會直接寫到磁碟中，實際上在server啟動時跟buffer pool一樣會向OS要一大塊redo log buffer的連續記憶體空間
+<ul>
+<li>此記憶體空間被劃分成許多連續的redo log block</li>
+</ul>
+</li>
+<li>redo記錄檔寫入磁碟時機
+<ol>
+<li>log buffer空間不足時: 佔log buffer總容量達50%時會寫入</li>
+<li>交易提交時: 雖然提交時可以不把修改過的buffer pool page立刻刷新到磁碟，但為了保證持久性，必續把page修改時對應的redo記錄檔刷新到磁碟</li>
+<li>正常關閉SERVER時</li>
+<li>做checkpoint時</li>
+<li>後臺其實有個thread daemon大概以每秒1次的頻率將log buffer刷新到磁碟</li>
+</ol>
+</li>
+</ul>
+<h2 id="mvcc">MVCC</h2>
+<p>交易併發執行的時候可能產生的一致性問題:
+(trx=transacitons)</p>
+<ol>
+<li>贓寫入(dirty write): 某個trx修改了另一個未提交(uncommitted)的資料</li>
+<li>Dirty Read: 讀到了未提交trx修改過的資料
+<ul>
+<li>當一個trx允許讀取另外一個trx修改但未提交的資料時可能發生</li>
+</ul>
+</li>
+<li>Non-Repeatable Read: 修改了未提交交易讀到的資料
+<ul>
+<li>當執行SELECT操作時沒有獲得讀鎖或者SELECT操作執行完後馬上釋放了讀鎖</li>
+</ul>
+</li>
+<li>Phantom Read: 在trx中執行兩次的一樣的query時，the <strong>collection</strong> of rows returned by the second query is different from the first.
+<ul>
+<li>
+<p>:::info
+<strong>Simple examples:</strong></p>
+<ul>
+<li>User A runs the same query twice.</li>
+<li>In between, User B runs a transaction and commits.</li>
+<li><strong>Non-repeatable read:</strong> The A row that user A has queried has a different value the second time.</li>
+<li><strong>Phantom read:</strong> All the rows in the query have the same value before and after, but different rows are being selected (because B has deleted or inserted some). Example: select sum(x) from table; will return a different result even if none of the affected rows themselves have been updated, if rows have been added or deleted.:::</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="鎖">鎖</h2>
+<p>寫-寫的狀態一定要加鎖
+讀寫/寫讀則依需求決定用MVCC的方式還是加鎖(加鎖會影響效能)。一般情境下當然傾向採用MVCC，除非特殊的業務場景要求必須用加鎖的方式執行(例如銀行交易)</p>
+<h3 id="consistent-read">Consistent Read</h3>
+<h3 id="locking-read-鎖定讀取">Locking Read (鎖定讀取)</h3>
+<p>鎖的種類</p>
+<ul>
+<li>Shared Lock:</li>
+<li>Exclusive Lock</li>
+</ul>
+<h4 id="sql的4種隔離等級">SQL的4種隔離等級</h4>
+<ul>
+<li>Read Uncommitted</li>
+<li>Read Committed</li>
+<li>Repeatable Read</li>
+<li>Serializable</li>
+</ul>
+<h2 id="advanced-mysql-and-mariadb">Advanced MySQL and MariaDB</h2>
+<h3 id="mysql-handle-scaling的方式">MYSQL handle scaling的方式:</h3>
+<ol>
+<li>Traditional threading</li>
+</ol>
+<ul>
+<li>one thread per connection (每個connection有自己的resource去run quires)
+<ul>
+<li>可能會造成使用過多的資源</li>
+<li>good for disk-bound workloads(有多個thread可以避免等IO)</li>
+<li>Bad for CPU-bound workloads(太多thread，context switch負擔大)</li>
+</ul>
+</li>
+<li>適合connection不多的情況 (works for a small number of connections)
+<ul>
+<li>disk access是重要factor的時候 (適合需要一直等I/O的情況)</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>比較好使用資源的方式是透過thread pooing</li>
+</ol>
+<ul>
+<li>
+<p>有限的thread數</p>
+</li>
+<li>
+<p>適合CPU-bound的quries (不用一直context switch)</p>
+<ul>
+<li>但不適合never wait的long-running quries(會delay其他quries)</li>
+</ul>
+</li>
+<li>
+<p>thread pool通常會在quries上加上delays (因為要等thread allocated to them)</p>
+</li>
+<li>
+<p>不適合bursty的情境(thread數量有限沒辦法處理大量需求)</p>
+</li>
+<li>
+<p>too many thread:</p>
+<ul>
+<li>too much CPU overhead</li>
+<li>too much memory</li>
+</ul>
+</li>
+<li>
+<p>too few thread:</p>
+<ul>
+<li>not using available resources</li>
+<li>queries may run more slowly</li>
+</ul>
+</li>
+<li>
+<p>建議thread數量和CPU數一樣(one thread per CPU)</p>
+</li>
+</ul>
+<h4 id="mysql-和-mariadb都implement-server-based-thread-pooling">MySQL 和 MariaDB都implement server-based thread pooling</h4>
+<ul>
+<li>MySQL只有企業版有 (作為plugin)</li>
+<li>MariaDB則是內建的</li>
+</ul>
+<h4 id="設定thread-pooling">設定thread pooling</h4>
+<ul>
+<li>thread_pool_size: 設定thread groups的數量
+<ul>
+<li>每個connection都會被assigned到一個thread group (用round-robin的方式)</li>
+<li>thread_pool_size預設16，最大4096</li>
+<li>在MYSQL中是靜態的(須重啟才會吃到設定); MariaDB中則是動態的(不須restart)</li>
+</ul>
+</li>
+<li>當thread pooling work well, 除了busrtiness太常發生
+<ul>
+<li>可以透過設定thread pool中的threads的數量</li>
+<li>thread+pool_max_threads預設是500</li>
+<li>在mySQL和MariaDB都是dynamics(不須restart)</li>
+</ul>
+</li>
+<li>每個groups都有一個listener thread去聽要連進來的connections (incoming connections)
+<ul>
+<li>當connection被assign到一個group的時候，如果groups內沒有其他quries等著要執行，那個listener就會去執行該query
+<ul>
+<li>也就是當thread group是空的時候, listener thread會開始執行query並且暫時unavailable</li>
+<li>因為透過round-robin去assign connection的原因，所以影響還好 (該thread groups暫時不會收到其他的connection)</li>
+<li>如果query花太多時間，thread group會創建新的listener thread去聽quries</li>
+<li>過了多久才要創新的listener thread可以透過thread_pool_stall_limit變數去設定</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>thread_pool_stall_limit預設是60ms,最大是6秒
+<ul>
+<li>當達到thread_pool_max_threads上限時，listener thread不會被創建
+:::info
+mysql5.6之前處理客戶端連接的方式會觸發mysql 新建一個thread來處理新的connection，新建的thread會處理該connection所發送的所有 SQL 請求，即 one-thread-per-connection 的方式，其創建connection的stack為：</li>
+</ul>
+</li>
+</ul>
+<pre tabindex="0"><code>0 mysql_execute_command 
+1 0x0000000000936f40 in mysql_parse 
+2 0x0000000000920664 in dispatch_command 
+3 0x000000000091e951 in do_command 
+4 0x00000000008c2cd4 in do_handle_one_connection 
+5 0x00000000008c2442 in handle_one_connection 
+6 0x0000003562e07851 in start_thread () from /lib64/libpthread.so.0 
+7 0x0000003562ae767d in clone () from /lib64/libc.so.6
+</code></pre><h3 id="優點及存在的問題">優點及存在的問題</h3>
+<p>在連接數較小的情況下可以很快的響應客戶端的請求，但當連接數非常大時會創建很多線程，這樣會引起以下問題：</p>
+<ol>
+<li>過多線程之間的切換會加重系統的負載，造成系統資源緊張且響應不及時；</li>
+<li>頻繁的進行線程的創建及銷毀以及線程間同時無序的竟爭系統資源加重了系統的負載。</li>
+</ol>
+<p>thread_pool正是為了解決以上問題而產生的；</p>
+<p>thread_pool(線程池)，是指mysql 創建若干工作線程來共同處理所有連接的用戶請求，用戶的請求的方式不再是 『one thread per connection』，而是多個線程共同接收並處理多個連接的請求</p>
+<p><a href="https://kknews.cc/zh-tw/code/344yexa.html">https://kknews.cc/zh-tw/code/344yexa.html</a>
+:::</p>
+<h2 id="gtid-global-transaction-identifiers">GTID (global transaction identifiers)</h2>
+<h3 id="gtids-in-mysql">GTIDs in MySQL</h3>
+<ul>
+<li>two-part GTID
+<ul>
+<li>Source id: 用來辨識transaction從哪個server來的(server UUID形式)</li>
+<li>Transaction id: (sequence number)</li>
+</ul>
+</li>
+<li>GTID範例:
+<ul>
+<li>假設有一個server id b8617fde-2810-11e4-bf16-98fe9446b48a</li>
+<li>對應的GTID為b8617fde-2810-11e4-bf16-98fe9446b48a:1-147</li>
+<li>這筆GTID的意思是該server has applied transactions 1到147</li>
+</ul>
+</li>
+<li>MySQL GTID Replication Setup
+<ul>
+<li>需要設定下列4個static參數</li>
+<li>
+<pre tabindex="0"><code class="language-init=" data-lang="init=">  [mysqld]
+  gtid-mode=ON
+  log-bin
+  log-slave-updates # 為了 to log all transactions
+  enforce-gtid-consistency # disable statements that are not GTID-safe
+</code></pre></li>
+</ul>
+</li>
+<li>MySQL GTID Slave Setup
+<ul>
+<li>
+<pre tabindex="0"><code class="language-mysql=" data-lang="mysql=">CHANGE MASTER TO
+MASTER_HOST=&#39;db.example.com&#39;,
+MASTER_PORT=3306,
+MASTER_USER=&#39;&lt;your user name&gt;&#39;,
+MASTER_PASSWORD=&#39;&lt;your pwd&gt;&#39;,
+MASTER_AUTO_POSITION=1;
+START SLAVE;
+</code></pre></li>
+</ul>
+</li>
+<li>replicate的步驟會先compares to GTIDs done接著才applies remaining GTIDs</li>
+</ul>
+<h3 id="gtids-in-mariadb">GTIDs in MariaDB</h3>
+<ul>
+<li>
+<p>Still positional</p>
+<ul>
+<li>matser is considered a <strong>source</strong>, replication is treated as a <strong>stream</strong></li>
+</ul>
+</li>
+<li>
+<p>three-part GTID</p>
+<ul>
+<li>Domain id: 用來辨識replication stream (integer type)</li>
+<li>Server id: 用來辨識originating server</li>
+<li>Sequence number: same as MySQL</li>
+</ul>
+</li>
+<li>
+<p>GTID範例:</p>
+<ul>
+<li>看起來會像7-943-20
+<ul>
+<li>7是domain id, 辨認這是哪個replication stream</li>
+<li>943是server id, 用來告訴mariaDB這個statement從哪個server來的</li>
+<li>20其實就是transaction sequence id，用來告訴mariaDB這個slave現在在replication stream的哪個位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>New Slave</p>
+<ul>
+<li>No range comparison like in MySQL GTIDs</li>
+<li>No backfill of any missing transactions</li>
+</ul>
+</li>
+<li>
+<p>MariaDB GTIDs特性</p>
+<ul>
+<li>less automatic than MySQL GTIDs (因為maria depends on fixed position)
+<ul>
+<li>也因此maria的slave可以支援more than one master(此特性也被稱為multisource replication)</li>
+</ul>
+</li>
+<li>預設啟動，不需要額外config to enable GTIDs in MariaDB</li>
+</ul>
+</li>
+<li>
+<p>MariaDB GTID Replication Setup</p>
+<ul>
+<li>不需要額外設定，除非使用more than 1 write sources，這種情況的話就要設定domain id</li>
+<li>
+<pre tabindex="0"><code class="language-init=" data-lang="init=">  [mysqld]
+  domain-id=12  # 此id為舉例用
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>MariaDB GTID Slave Setup</p>
+<ul>
+<li>
+<pre tabindex="0"><code class="language-mysql=" data-lang="mysql=">CHANGE MASTER TO
+MASTER_HOST=&#39;db.example.com&#39;,
+MASTER_PORT=3306,
+MASTER_USER=&#39;&lt;your user name&gt;&#39;,
+MASTER_PASSWORD=&#39;&lt;your pwd&gt;&#39;,
+MASTER_USE_GTID=current_pos;
+START SLAVE;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="multisource-replication">Multisource Replication</h3>
+<ul>
+<li>MariaDB only</li>
+<li>Slave間的互動更複雜(complicated)</li>
+</ul>
+<h2 id="mariadb架構介紹">MariaDB架構介紹</h2>
+<p>在oracle的世界中，有所謂的tablespace的概念，
+原因是以前單一檔案有大小限制，為了讓table突破容量限制，引進了tablespace的概念
+透過邏輯的方式讓table對應到多個datafile</p>
+<p>但是比較新的database通常都是1張table對應1個data file，也就沒有tablespace的概念了
+(檔案不像以前有大小限制了)</p>
+<p>&lt;Oracle&gt;
+Server
+Database
+Tablespace-DataFile
+Table</p>
+<p>&lt;MariaDB&gt;
+Server
+Database
+Table-DataFile</p>
+<h2 id="mysql實戰-指令解說">MySQL實戰: 指令解說</h2>
+<p>這個section記錄了常用的指令</p>
+<h2 id="grant">GRANT</h2>
+<pre tabindex="0"><code>GRANT
+    priv_type [(column_list)]
+      [, priv_type [(column_list)]] ...
+    ON [object_type] priv_level
+    TO user_or_role [, user_or_role] ...
+    [WITH GRANT OPTION]
+    [AS user
+        [WITH ROLE
+            DEFAULT
+          | NONE
+          | ALL
+          | ALL EXCEPT role [, role ] ...
+          | role [, role ] ...
+        ]
+    ]
+}
+
+GRANT PROXY ON user_or_role
+    TO user_or_role [, user_or_role] ...
+    [WITH GRANT OPTION]
+
+GRANT role [, role] ...
+    TO user_or_role [, user_or_role] ...
+    [WITH ADMIN OPTION]
+
+object_type: {
+    TABLE
+  | FUNCTION
+  | PROCEDURE
+}
+
+priv_level: {
+    *
+  | *.*
+  | db_name.*
+  | db_name.tbl_name
+  | tbl_name
+  | db_name.routine_name
+}
+
+user_or_role: {
+    user (see Section 6.2.4, “Specifying Account Names”)
+  | role (see Section 6.2.5, “Specifying Role Names”)
+}
+</code></pre><h3 id="account-names-帳號名稱">Account Names (帳號名稱)</h3>
+<p>A user value in a GRANT statement indicates a MySQL account to which the statement applies. To accommodate granting rights to users from arbitrary hosts, MySQL supports specifying the user value in the form &lsquo;user_name&rsquo;@&lsquo;host_name&rsquo;.</p>
+<p>You can specify wildcards in the host name. For example, &lsquo;user_name&rsquo;@&rsquo;%.example.com&rsquo; applies to user_name for any host in the example.com domain, and &lsquo;user_name&rsquo;@&lsquo;198.51.100.%&rsquo; applies to user_name for any host in the 198.51.100 class C subnet.</p>
+<p>The simple form &lsquo;user_name&rsquo; is a synonym for &lsquo;user_name&rsquo;@&rsquo;%&rsquo;.</p>
+<p>MySQL的user name不支援 wildcards. 至於匿名使用者(anonymous user), 在指定account的時候給空值即可(specify an account with an empty user name with the GRANT statement):</p>
+<p><code>GRANT ALL ON test.* TO ''@'localhost' ...;</code></p>
+<p><a href="https://mariadb.com/kb/en/how-to-add-an-anonymous-user/">匿名使用者</a></p>
+<h3 id="rdb-vs-nosql">RDB vs NoSQL:</h3>
+<ol>
+<li>
+<p>NoSQL雖然有優勢，但是這些優勢是需要付出代價的，例如絕大部分只支持key-value的操作，不能使用join的功能
+資料安全性跟穩定性的議題，適合業務複雜度不高的應用
+至於<a href="https://blog.csdn.net/jiandanokok/article/details/94591790">handlersocket</a>，應用上簡單快速的操作可以透過handlersocket實現，複雜的操作，還是會透過傳統MySQL的方式實現
+<a href="https://mariadb.com/kb/en/handlersocket/">MariaDB Knowledge Base - Handle socket</a></p>
+</li>
+<li>
+<p>資料機敏性高的時候是用RDB，NoSQL常會有資料不一致問題 (data inconsistency)</p>
+</li>
+</ol>
+
+        </div>
+
+        
+        
+        <script src="https://utteranc.es/client.js"
+        repo="kuanyuce/KuanYuCE.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  var indexURL = "https://kuanyuce.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://kuanyuce.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/search/mark.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://kuanyuce.github.io/js/script.min.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<div id="js-cookie-box" class="cookie-box cookie-box-hide">
+	This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button" class="btn btn-sm btn-primary ml-2">I Accept</span>
+</div>
+<script>
+	(function ($) {
+		const cookieBox = document.getElementById('js-cookie-box');
+		const cookieButton = document.getElementById('js-cookie-button');
+		if (!Cookies.get('cookie-box')) {
+			cookieBox.classList.remove('cookie-box-hide');
+			cookieButton.onclick = function () {
+				Cookies.set('cookie-box', true, {
+					expires:  2 
+				});
+				cookieBox.classList.add('cookie-box-hide');
+			};
+		}
+	})(jQuery);
+</script>
+
+
+<style>
+.cookie-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 9999;
+  padding: 1rem 2rem;
+  background: rgb(71, 71, 71);
+  transition: all .75s cubic-bezier(.19, 1, .22, 1);
+  color: #fdfdfd;
+}
+
+.cookie-box-hide {
+  display: none;
+}
+</style>
+</body>
+</html>
