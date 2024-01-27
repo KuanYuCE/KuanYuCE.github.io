@@ -6,14 +6,42 @@
     <description>Recent content in Programming Language on Ky&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 21 Jan 2024 23:07:47 +0800</lastBuildDate>
-    <atom:link href="https://kuanyuce.github.io/categories/programming-language/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Jan 2024 18:22:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://kuanyuce.github.io/categories/programming-language/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
-      <title>Java SE 17</title>
-      <link>https://kuanyuce.github.io/blog/java17/</link>
-      <pubDate>Sun, 21 Jan 2024 23:07:47 +0800</pubDate>
-      <guid>https://kuanyuce.github.io/blog/java17/</guid>
-      <description>Thread 要執行Thread程式，最簡單的方式就是定義一個class繼承Runnable interface，並呼叫start()開始執行:&#xA;package cc.openhome; public class Hare implements Runnable { private boolean[] flags = {true, false}; private int totalStep; private int step; public Hare(int totalStep) { this.</description>
+      <title>Java Generic</title>
+      <link>https://kuanyuce.github.io/blog/javageneric/</link>
+      <pubDate>Sat, 27 Jan 2024 18:22:07 +0800</pubDate>
+      
+      <guid>https://kuanyuce.github.io/blog/javageneric/</guid>
+      <description>Generic Static method 要宣告靜態方法的泛型時, 記得要在static後面加上類別型態
+原因是因為泛型這機制其實是runtime的時候動態的幫你轉換型別
+所以實際上你在宣告(使用)的時候, 會先寫好型別,
+接著在new object的時候就會根據你宣告的型別做轉換</description>
     </item>
+    
+    <item>
+      <title>Java好用的feature</title>
+      <link>https://kuanyuce.github.io/blog/javafeature/</link>
+      <pubDate>Sat, 27 Jan 2024 18:22:07 +0800</pubDate>
+      
+      <guid>https://kuanyuce.github.io/blog/javafeature/</guid>
+      <description>Java好用方法   Method Reference (Java8)
+ 使用: 以雙冒號double colon(::)呈現 目的: 避免重複撰寫Lambda運算式, 同時能讓程式碼更為清楚 用法:   Arrays.</description>
+    </item>
+    
+    <item>
+      <title>Java Thread</title>
+      <link>https://kuanyuce.github.io/blog/javathread/</link>
+      <pubDate>Sun, 21 Jan 2024 23:07:47 +0800</pubDate>
+      
+      <guid>https://kuanyuce.github.io/blog/javathread/</guid>
+      <description>Thread 要執行Thread程式，最簡單的方式就是定義一個class繼承Runnable interface，並呼叫start()開始執行:
+package cc.openhome; public class Hare implements Runnable { private boolean[] flags = {true, false}; private int totalStep; private int step; public Hare(int totalStep) { this.</description>
+    </item>
+    
   </channel>
 </rss>

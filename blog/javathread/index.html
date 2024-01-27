@@ -5,7 +5,7 @@
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java技術手冊學習記錄">
+  <meta name="description" content="Java Thread學習記錄">
   <meta name="author" content="ky">
     
   
@@ -126,7 +126,7 @@
         <a href="/categories/programming-language"
           class="text-primary">Programming language</a>
         
-        <h2>Java SE 17</h2>
+        <h2>Java Thread</h2>
         <div class="mb-3 post-meta">
           <span>By ky</span>
           
@@ -135,7 +135,7 @@
           
         </div>
         
-        <img src="https://kuanyuce.github.io/images/post/javase17.png" class="img-fluid w-100 mb-4" alt="Java SE 17">
+        <img src="https://kuanyuce.github.io/images/post/javase17.png" class="img-fluid w-100 mb-4" alt="Java Thread">
         
         <div class="content mb-5">
           <h3 id="thread">Thread</h3>
@@ -311,244 +311,7 @@ public class Download3 {
         executorService.shutdown();
     }
 }
-</code></pre><h2 id="java8之後的好用方法">Java8之後的好用方法</h2>
-<h3 id="double-colon-java8">double colon(::)-java8</h3>
-<ul>
-<li>Method Reference</li>
-<li>避免重複撰寫Lambda運算式, 同時能讓程式碼更為清楚</li>
-</ul>
-<pre><code>Arrays.sort(names, (name1, name2)-&gt;StringOrder.byLength(name1, name2));
-
-// 可改為
-Arrays.sort(names, StringOrder::byLength);
-</code></pre><h3 id="of用法-java9">of用法-java9</h3>
-<blockquote>
-<p>可以簡單看成建立List, Map, Set實例的便捷方法</p>
-</blockquote>
-<p>List接口，Set接口，Map接口：裡面增加了一個靜態的方法of，可以給集合一次性添加多個元素 <code>static &lt;E&gt; List&lt;E&gt; of (E...elements)</code></p>
-<ul>
-<li>使用前提： 當集合中存儲的元素個數已經確定了，不再改變時使用。</li>
-<li>注意：
-<ol>
-<li>of方法只適用於List接口，Set接口，Map接口，不適用於接口的實現類</li>
-<li>of方法的返回值是一個不能改變的集合，集合不能再使用add,put方法添加元素，會拋出異常</li>
-<li>Set接口和Map接口在調用of方法的時候，不能有重覆的元素，否則會拋出異常</li>
-</ol>
-</li>
-</ul>
-<h3 id="lombok-vs-record-vs-pojo">lombok vs record vs pojo</h3>
-<p><a href="https://klab.tw/2023/01/java-16-record-and-lombok-comparison/">參考</a></p>
-<p>值得注意的是record定義的資料載體可以透過<code>&lt;record&gt;::&lt;attribute&gt;</code>去拿到該record的值</p>
-<p>通常會和of()以及stream()一起使用</p>
-<pre><code class="language-java=" data-lang="java=">public class Demo {
-        public static void main(String[] args) {
-
-            var employees = List.of(
-                    new Employee(&quot;Justin&quot;, 39, Gender.MALE),
-                    new Employee(&quot;Monica&quot;, 36, Gender.FEMALE),
-                    new Employee(&quot;Irene&quot;, 6, Gender.FEMALE)
-            );
-
-            var sum = employees.stream()
-                    .filter(employee -&gt; employee.gender() == Gender.MALE)
-                    .mapToInt(Employee::age)
-                    .sum();
-
-            var average = employees.stream()
-                    .filter(employee -&gt; employee.gender() == Gender.MALE)
-                    .mapToInt(Employee::age)
-                    .average()
-                    .getAsDouble();
-
-            var max = employees.stream()
-                    .filter(employee -&gt; employee.gender() == Gender.MALE)
-                    .mapToInt(Employee::age)
-                    .max()
-                    .getAsInt();
-
-            List.of(sum, average, max).forEach(out::println);
-        }
-        
-    enum Gender { FEMALE, MALE }
-
-    record Employee(String name, Integer age, Gender gender) {}
-}
-</code></pre><h3 id="text-block---java15">text block - java15</h3>
-<pre><code class="language-java=" data-lang="java=">String json = &quot;{\n&quot; +
-        &quot;  \&quot;array\&quot;: [\n&quot; +
-        &quot;    1,\n&quot; +
-        &quot;    2,\n&quot; +
-        &quot;    3\n&quot; +
-        &quot;  ],\n&quot; +
-        &quot;  \&quot;boolean\&quot;: true,\n&quot; +
-        &quot;  \&quot;color\&quot;: \&quot;gold\&quot;,\n&quot; +
-        &quot;  \&quot;null\&quot;: null,\n&quot; +
-        &quot;  \&quot;number\&quot;: 123,\n&quot; +
-        &quot;  \&quot;object\&quot;: {\n&quot; +
-        &quot;    \&quot;a\&quot;: \&quot;b\&quot;,\n&quot; +
-        &quot;    \&quot;c\&quot;: \&quot;d\&quot;\n&quot; +
-        &quot;  },\n&quot; +
-        &quot;  \&quot;string\&quot;: \&quot;Hello World\&quot;\n&quot; +
-        &quot;}&quot;;
-
-String json = &quot;&quot;&quot;
-{
-  &quot;b1oolean&quot;: true,
-  &quot;color&quot;: &quot;gold&quot;,
-  &quot;number&quot;: 123,
-  &quot;string&quot;: &quot;Hello World&quot;
-}
-&quot;&quot;&quot;;
-</code></pre><h3 id="map-vs-maptoint">map vs mapToInt</h3>
-<ul>
-<li>兩者返回的數據類型不同
-<ul>
-<li>map返回Stream object
-<ul>
-<li>就只是返回一個通用的stream類型, 可以繼續接map or reduce or filter..等 Stream&lt;T&gt;方法</li>
-</ul>
-</li>
-<li>mapToInt返回IntStream
-<ul>
-<li>IntStream提供了sum(), average(), max(), min()等方法</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="record">Record</h3>
-<p><a href="https://cloud.tencent.com/developer/article/2017497">參考</a>
-大致說來，Kotlin中叫data class，Java中叫Record Class這個名稱不太一樣以外，其它的都是極為類似的。</p>
-<p>我們用Java 17中的Record Class 來重寫上述這個類，代碼是這樣的：</p>
-<p><code>public record EmployeeDTO(String name,String idCard,int age){}</code>
-是不是幾乎和Kotlin中的data class一模一樣呢?</p>
-<p>是的，就是這麽回事，它簡化了數據類的定義。所以如果你非常厭煩Java數據類的重覆定義，與其去使用lombok這種侵入性非常強的第三方庫，還不如升級使用Java 17。</p>
-<h4 id="record-class需要關注的點">record class需要關注的點</h4>
-<p>當然，關於record class，仍然有一些基本原則你需要知道。</p>
-<blockquote>
-<p>不能在record類的body中添加屬性，屬性只能定義在類的括號後面（稱為header）</p>
-</blockquote>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
-    //這是不允許的
-    private String description;
-    
-}
-</code></pre><blockquote>
-<p>可以在record類中添加靜態屬性與方法</p>
-</blockquote>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
-    //這是允許的
-    private static System.Logger logger = System.getLogger(EmployeeDTO.class.getName());
-}
-</code></pre><blockquote>
-<p>可以添加額外的類方法，這是允許的</p>
-</blockquote>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
-    //這是允許的
-    public String toJson(){
-        //...
-        return &quot;&quot;;
-    }
-}
-</code></pre><p>比如，你可以添加一個方法，有時候我們需要將數據對象轉換為JSON來傳輸或存儲，那就添加一個toJson方法就好了.</p>
-<blockquote>
-<p>可以覆蓋默認生成的一些東西</p>
-</blockquote>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
-    //這是允許的
-    public int getAge(){
-        return age;
-    }
-}
-</code></pre><blockquote>
-<p>可以在方法中定義Local Record Classes</p>
-</blockquote>
-<p>在方法內部，你可以定義一個局部本地的record類</p>
-<pre><code class="language-java=" data-lang="java=">public void calculateLocation(double x,double y){
-    //定義一個本地record類
-    record Point(double x, double y) {}
-
-    var point = new Point(x,y);
-    //...
-    }
-</code></pre><p>這個在一些局部方法中需要封裝一些參數時，又沒必要把這個類定義在外面時非常有用。</p>
-<blockquote>
-<p>Java中的所有record類，都默認實現了Record接口</p>
-</blockquote>
-<pre><code class="language-java=" data-lang="java=">@Test
-void testRecord(){
-    record Point(double x,double y){}
-    var point = new Point(0,0);
-    //Point是實現了Record接口的
-    Assertions.assertTrue(point instanceof Record);
-}
-</code></pre><h2 id="generic">Generic</h2>
-<h3 id="static-method">Static method</h3>
-<p>要宣告靜態方法的泛型時, 記得要在static後面加上<!-- raw HTML omitted -->類別型態</p>
-<p>原因是因為泛型這機制其實是runtime的時候動態的幫你轉換型別</p>
-<p>所以實際上你在宣告(使用)的時候, 會先寫好型別,</p>
-<p>接著在new object的時候就會根據你宣告的型別做轉換</p>
-<p>但問題是靜態方法是在編譯期轉換的, 此時compiler並不知道實際的類別是什麼(不知道怎麼轉換)</p>
-<p>因此才需要在static後面接上型別告訴compiler編譯期要怎麼轉換</p>
-<blockquote>
-<p>如果想在类的静态方法里上使用泛型, 以及如何在调用的时候, 传入泛型类型呢?
-静态方法在 static 关键字之后, 声明泛型:
-<code>public static &lt;R&gt; Builder&lt;R&gt; builder() {...}</code></p>
-</blockquote>
-<h3 id="泛型的來源原理">泛型的來源、原理</h3>
-<ul>
-<li>Java 會在 編譯期間擦除(type erasure) 所有的泛型訊息，這樣就可以讓 JVM 使用相同的字節碼而不必新增，在 JVM Runtime 時就不存在所謂的泛型訊息 (後面會介紹泛型擦除)</li>
-</ul>
-<h3 id="泛型副作用">泛型副作用</h3>
-<ul>
-<li>不能使用基本數據類型 (byte、char、short、int、long、double)，因為擦除後會轉換為 Object 類型</li>
-<li>不能使用 instanceof 運算符號，同樣是因為類型擦除後所帶來的副作用，會導致無法判別</li>
-<li>擦拭後都是 Object 類型，沒得判斷</li>
-<li>不能使用在靜態，泛型創建對象時才能確定，但靜態方法、參數，是不用加載就可以使用 (泛型方法則可以，因為泛型方法是呼叫後才加載)</li>
-</ul>
-<pre><code class="language-java=" data-lang="java=">// 假如我们定义一个泛型类Generic
-class Generic&lt;T&gt; {
-    private T obj;
-
-    public Generic(T o) {
-        obj = o;
-    }
-    public T getObj() {
-        return obj;
-    }
-}  
-    
-//那么Java编译后的bytecode中Generic相当于这样的
-class Generic {
-    private Object obj;
-
-    public Generic(Object o) {
-        obj = o;
-    }
-    public Object getObj() {
-        return obj;
-    }
-}
-  
-</code></pre><h3 id="java---偽泛型">Java - 偽泛型</h3>
-<ul>
-<li>
-<p>Java / kotlin 虛擬機其實內部並無泛型，並不是真正的泛型 ，JDK 5 才有泛型，為了向上兼容，才會演變成 ++偽泛型++</p>
-<blockquote>
-<p>在編譯後的字節碼中以替換成原生類型(Raw Type)，並在相應的第方插入強制轉型代碼，所以對於運行期的 Java 語言來說 List<!-- raw HTML omitted --> and List<!-- raw HTML omitted --> 就是同一類別，Java 語言中的泛型實現方法稱為 類型擦除，基於這種方法實現的泛型是偽泛型</p>
-</blockquote>
-</li>
-<li>
-<p>在泛型中並不是所有的擦除都會變成 Object 的，當泛型有限制性，Test<!-- raw HTML omitted -->，則會被擦除成 Apple</p>
-</li>
-</ul>
-<pre><code class="language-java=" data-lang="java=">List list = new ArrayList&lt;Integer\&gt;();
-List&lt;String&gt; list2 = list;
-</code></pre><blockquote>
-<p>擦除過後 ArrayList<!-- raw HTML omitted --> 轉為 Array List，List<!-- raw HTML omitted --> 轉為 List</p>
-</blockquote>
-<p><a href="https://hackmd.io/@AlienHackMd/rkGtP5TeI">參考</a></p>
-
+</code></pre>
         </div>
 
         

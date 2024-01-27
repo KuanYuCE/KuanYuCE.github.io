@@ -7,13 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Mon, 22 Jan 2024 00:24:47 +0800</lastBuildDate>
-    <atom:link href="https://kuanyuce.github.io/categories/database/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://kuanyuce.github.io/categories/database/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>MySQL隨筆</title>
       <link>https://kuanyuce.github.io/blog/mysql/</link>
       <pubDate>Mon, 22 Jan 2024 00:24:47 +0800</pubDate>
+      
       <guid>https://kuanyuce.github.io/blog/mysql/</guid>
-      <description>啟動MySQL伺服器的方式 mysqld mysqld_safe mysql.server mysqld_multi 檢查Char set 編碼: 字元(看得懂的字) -&amp;gt; 二進位資料 解碼: 二進位資料 -&amp;gt; 字元 一般來說，用戶端encode request string的時候使用的charset和OS當前用的charset會一致</description>
+      <description>啟動MySQL伺服器的方式  mysqld mysqld_safe mysql.server mysqld_multi  檢查Char set 編碼: 字元(看得懂的字) -&amp;gt; 二進位資料 解碼: 二進位資料 -&amp;gt; 字元 一般來說，用戶端encode request string的時候使用的charset和OS當前用的charset會一致</description>
     </item>
+    
   </channel>
 </rss>

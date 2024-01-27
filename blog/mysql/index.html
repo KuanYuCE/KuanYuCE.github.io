@@ -11,7 +11,7 @@
   
   <meta name="theme-name" content="liva-hugo" />
   
-  <meta name="generator" content="Hugo 0.121.2">
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -147,7 +147,7 @@
 <p>編碼: 字元(看得懂的字) -&gt; 二進位資料
 解碼: 二進位資料 -&gt; 字元
 一般來說，用戶端encode request string的時候使用的charset和OS當前用的charset會一致</p>
-<pre tabindex="0"><code class="language-bash=" data-lang="bash="># 優先級: LC_ALL &gt; LC_CTYPE &gt; LANG
+<pre><code class="language-bash=" data-lang="bash="># 優先級: LC_ALL &gt; LC_CTYPE &gt; LANG
 # 呼叫的系統函數為nl_langinfo(CODESET)
 echo $LC_ALL
 echo $LC_CTYPE
@@ -197,7 +197,7 @@ echo $LANG
 <h2 id="join">Join</h2>
 <h3 id="join過程">Join過程</h3>
 <p>以下列SQL為例:</p>
-<pre tabindex="0"><code class="language-mysql=" data-lang="mysql=">SELECT * FROM t1, t2 WHERE t1.m1&gt;1 AND t1.m1 = t2.m2 AND t2.n2 &lt; &#39;d&#39;
+<pre><code class="language-mysql=" data-lang="mysql=">SELECT * FROM t1, t2 WHERE t1.m1&gt;1 AND t1.m1 = t2.m2 AND t2.n2 &lt; 'd'
 </code></pre><ol>
 <li>確定第一章要查詢的表，稱為驅動表</li>
 <li>從驅動表每獲取一筆紀錄，都需要到t2表中尋找匹配的資料</li>
@@ -513,7 +513,7 @@ mysql5.6之前處理客戶端連接的方式會觸發mysql 新建一個thread來
 </ul>
 </li>
 </ul>
-<pre tabindex="0"><code>0 mysql_execute_command 
+<pre><code>0 mysql_execute_command 
 1 0x0000000000936f40 in mysql_parse 
 2 0x0000000000920664 in dispatch_command 
 3 0x000000000091e951 in do_command 
@@ -551,7 +551,7 @@ mysql5.6之前處理客戶端連接的方式會觸發mysql 新建一個thread來
 <ul>
 <li>需要設定下列4個static參數</li>
 <li>
-<pre tabindex="0"><code class="language-init=" data-lang="init=">  [mysqld]
+<pre><code class="language-init=" data-lang="init=">  [mysqld]
   gtid-mode=ON
   log-bin
   log-slave-updates # 為了 to log all transactions
@@ -562,11 +562,11 @@ mysql5.6之前處理客戶端連接的方式會觸發mysql 新建一個thread來
 <li>MySQL GTID Slave Setup
 <ul>
 <li>
-<pre tabindex="0"><code class="language-mysql=" data-lang="mysql=">CHANGE MASTER TO
-MASTER_HOST=&#39;db.example.com&#39;,
+<pre><code class="language-mysql=" data-lang="mysql=">CHANGE MASTER TO
+MASTER_HOST='db.example.com',
 MASTER_PORT=3306,
-MASTER_USER=&#39;&lt;your user name&gt;&#39;,
-MASTER_PASSWORD=&#39;&lt;your pwd&gt;&#39;,
+MASTER_USER='&lt;your user name&gt;',
+MASTER_PASSWORD='&lt;your pwd&gt;',
 MASTER_AUTO_POSITION=1;
 START SLAVE;
 </code></pre></li>
@@ -625,7 +625,7 @@ START SLAVE;
 <ul>
 <li>不需要額外設定，除非使用more than 1 write sources，這種情況的話就要設定domain id</li>
 <li>
-<pre tabindex="0"><code class="language-init=" data-lang="init=">  [mysqld]
+<pre><code class="language-init=" data-lang="init=">  [mysqld]
   domain-id=12  # 此id為舉例用
 </code></pre></li>
 </ul>
@@ -634,11 +634,11 @@ START SLAVE;
 <p>MariaDB GTID Slave Setup</p>
 <ul>
 <li>
-<pre tabindex="0"><code class="language-mysql=" data-lang="mysql=">CHANGE MASTER TO
-MASTER_HOST=&#39;db.example.com&#39;,
+<pre><code class="language-mysql=" data-lang="mysql=">CHANGE MASTER TO
+MASTER_HOST='db.example.com',
 MASTER_PORT=3306,
-MASTER_USER=&#39;&lt;your user name&gt;&#39;,
-MASTER_PASSWORD=&#39;&lt;your pwd&gt;&#39;,
+MASTER_USER='&lt;your user name&gt;',
+MASTER_PASSWORD='&lt;your pwd&gt;',
 MASTER_USE_GTID=current_pos;
 START SLAVE;
 </code></pre></li>
@@ -668,7 +668,7 @@ Table-DataFile</p>
 <h2 id="mysql實戰-指令解說">MySQL實戰: 指令解說</h2>
 <p>這個section記錄了常用的指令</p>
 <h2 id="grant">GRANT</h2>
-<pre tabindex="0"><code>GRANT
+<pre><code>GRANT
     priv_type [(column_list)]
       [, priv_type [(column_list)]] ...
     ON [object_type] priv_level
@@ -714,8 +714,8 @@ user_or_role: {
 }
 </code></pre><h3 id="account-names-帳號名稱">Account Names (帳號名稱)</h3>
 <p>A user value in a GRANT statement indicates a MySQL account to which the statement applies. To accommodate granting rights to users from arbitrary hosts, MySQL supports specifying the user value in the form &lsquo;user_name&rsquo;@&lsquo;host_name&rsquo;.</p>
-<p>You can specify wildcards in the host name. For example, &lsquo;user_name&rsquo;@&rsquo;%.example.com&rsquo; applies to user_name for any host in the example.com domain, and &lsquo;user_name&rsquo;@&lsquo;198.51.100.%&rsquo; applies to user_name for any host in the 198.51.100 class C subnet.</p>
-<p>The simple form &lsquo;user_name&rsquo; is a synonym for &lsquo;user_name&rsquo;@&rsquo;%&rsquo;.</p>
+<p>You can specify wildcards in the host name. For example, &lsquo;user_name&rsquo;@'%.example.com&rsquo; applies to user_name for any host in the example.com domain, and &lsquo;user_name&rsquo;@&lsquo;198.51.100.%&rsquo; applies to user_name for any host in the 198.51.100 class C subnet.</p>
+<p>The simple form &lsquo;user_name&rsquo; is a synonym for &lsquo;user_name&rsquo;@'%'.</p>
 <p>MySQL的user name不支援 wildcards. 至於匿名使用者(anonymous user), 在指定account的時候給空值即可(specify an account with an empty user name with the GRANT statement):</p>
 <p><code>GRANT ALL ON test.* TO ''@'localhost' ...;</code></p>
 <p><a href="https://mariadb.com/kb/en/how-to-add-an-anonymous-user/">匿名使用者</a></p>

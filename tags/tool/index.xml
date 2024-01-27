@@ -6,21 +6,19 @@
     <description>Recent content in Tool on Ky&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 26 Jan 2024 00:31:51 +0800</lastBuildDate>
-    <atom:link href="https://kuanyuce.github.io/tags/tool/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Pandas隨筆</title>
-      <link>https://kuanyuce.github.io/blog/pandas/</link>
-      <pubDate>Fri, 26 Jan 2024 00:31:51 +0800</pubDate>
-      <guid>https://kuanyuce.github.io/blog/pandas/</guid>
-      <description>Pandas 101 由於工作上不定期會碰到pandas, 上次大量接觸pandas已是學生修課時期. 發現lib用法會隨著時間淡忘, 故在此紀錄供快速上手用&#xA;Basic data structure in Pandas Pandas有兩種資料型態：</description>
-    </item>
+    <lastBuildDate>Mon, 22 Jan 2024 00:24:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://kuanyuce.github.io/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>MySQL隨筆</title>
       <link>https://kuanyuce.github.io/blog/mysql/</link>
       <pubDate>Mon, 22 Jan 2024 00:24:47 +0800</pubDate>
+      
       <guid>https://kuanyuce.github.io/blog/mysql/</guid>
-      <description>啟動MySQL伺服器的方式 mysqld mysqld_safe mysql.server mysqld_multi 檢查Char set 編碼: 字元(看得懂的字) -&amp;gt; 二進位資料 解碼: 二進位資料 -&amp;gt; 字元 一般來說，用戶端encode request string的時候使用的charset和OS當前用的charset會一致</description>
+      <description>啟動MySQL伺服器的方式  mysqld mysqld_safe mysql.server mysqld_multi  檢查Char set 編碼: 字元(看得懂的字) -&amp;gt; 二進位資料 解碼: 二進位資料 -&amp;gt; 字元 一般來說，用戶端encode request string的時候使用的charset和OS當前用的charset會一致</description>
     </item>
+    
   </channel>
 </rss>
