@@ -5,7 +5,7 @@
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java Generic學習記錄">
+  <meta name="description" content="This is meta description">
   <meta name="author" content="ky">
     
   
@@ -123,86 +123,42 @@
     <div class="row">
       <div class="col-lg-10 mx-auto">
         
-        <a href="/categories/programming-language"
-          class="text-primary">Programming language</a>
-        
-        <h2>Java Generic</h2>
+        <h2></h2>
         <div class="mb-3 post-meta">
           <span>By ky</span>
           
           <span class="border-bottom border-primary px-2 mx-1"></span>
-          <span>27 January 2024</span>
+          <span>01 January 0001</span>
           
         </div>
         
         <div class="content mb-5">
-          <h2 id="generic">Generic</h2>
-<h3 id="static-method">Static method</h3>
-<p>要宣告靜態方法的泛型時, 記得要在static後面加上<!-- raw HTML omitted -->類別型態</p>
-<p>原因是因為泛型這機制其實是runtime的時候動態的幫你轉換型別</p>
-<p>所以實際上你在宣告(使用)的時候, 會先寫好型別,</p>
-<p>接著在new object的時候就會根據你宣告的型別做轉換</p>
-<p>但問題是靜態方法是在編譯期轉換的, 此時compiler並不知道實際的類別是什麼(不知道怎麼轉換)</p>
-<p>因此才需要在static後面接上型別告訴compiler編譯期要怎麼轉換</p>
-<blockquote>
-<p>如果想在class的靜態方法裡上用泛型, 如何在invoke的時候, 傳入泛型類型呢?
-靜態方法在 static 關鍵字之後, 宣告泛型:
-<code>public static &lt;R&gt; Builder&lt;R&gt; builder() {...}</code></p>
-</blockquote>
-<h3 id="泛型的來源原理">泛型的來源、原理</h3>
+          <h1 id="java-gql-poc">Java-GQL-POC</h1>
+<h2 id="sample-data">Sample Data</h2>
 <ul>
-<li>Java 會在編譯期擦除(type erasure) 所有的泛型訊息，這樣就可以讓 JVM 使用相同的bytecode而不必新增，在 JVM Runtime 時就不存在所謂的泛型訊息</li>
+<li>sample/lot_proc_time.json</li>
+<li>sample/wafer_main.json</li>
 </ul>
-<h3 id="泛型副作用">泛型副作用</h3>
-<ul>
-<li>不能使用基本數據類型 (byte、char、short、int、long、double)，因為擦除後會轉換為 Object 類型</li>
-<li>不能使用 instanceof 運算符號，同樣是因為類型擦除後所帶來的副作用，會導致無法判別</li>
-<li>擦拭後都是 Object 類型，沒得判斷</li>
-<li>不能使用在靜態方法上，因為泛型創建對象時才能確定型別，但靜態方法、參數，是不用加載就可以使用 (泛型方法則可以，因為泛型方法是呼叫後才加載)</li>
-</ul>
-<pre tabindex="0"><code class="language-java=" data-lang="java=">// 假如我们定義一个泛型類Generic
-class Generic&lt;T&gt; {
-    private T obj;
-
-    public Generic(T o) {
-        obj = o;
-    }
-    public T getObj() {
-        return obj;
-    }
-}  
-    
-//那麼Java編譯後的bytecode的Generic相當於
-class Generic {
-    private Object obj;
-
-    public Generic(Object o) {
-        obj = o;
-    }
-    public Object getObj() {
-        return obj;
-    }
-}
-  
-</code></pre><h3 id="java---偽泛型">Java - 偽泛型</h3>
-<ul>
-<li>
-<p>Java / kotlin 虛擬機其實內部並無泛型，並不是真正的泛型 ，JDK 5 才有泛型，為了向上兼容，才會演變成 <strong>偽泛型</strong></p>
-<blockquote>
-<p>在編譯後的字節碼中替換成原生類型(Raw Type)，並在相應的地方插入強制轉型代碼，所以對於運行期的 Java 語言來說 List<!-- raw HTML omitted --> and List<!-- raw HTML omitted --> 就是同一類別，Java 語言中的泛型實現方法稱為 類型擦除，基於這種方法實現的泛型就是偽泛型</p>
-</blockquote>
-</li>
-<li>
-<p>在泛型中並不是所有的擦除都會變成 Object 的，當泛型有限制性，Test<!-- raw HTML omitted -->，則會被擦除成 Apple</p>
-</li>
-</ul>
-<pre tabindex="0"><code class="language-java=" data-lang="java=">List list = new ArrayList&lt;Integer\&gt;();
-List&lt;String&gt; list2 = list;
-</code></pre><blockquote>
-<p>擦除過後 ArrayList<!-- raw HTML omitted --> 轉為 Array List，List<!-- raw HTML omitted --> 轉為 List</p>
-</blockquote>
-<p><a href="https://hackmd.io/@AlienHackMd/rkGtP5TeI">參考</a></p>
-
+<h2 id="run">Run</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mvn spring-boot:run
+</span></span></code></pre></div><h2 id="sample-query">Sample Query</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-graphql" data-lang="graphql"><span style="display:flex;"><span><span style="color:#66d9ef">query</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getWaferByLot</span>(lot_id: [<span style="color:#e6db74">&#34;EE&#34;</span>, <span style="color:#e6db74">&#34;EE&#34;</span>], <span style="color:#a6e22e">tz</span>: <span style="color:#e6db74">&#34;GMT+8&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lot_id</span>
+</span></span><span style="display:flex;"><span>    wafer_id
+</span></span><span style="display:flex;"><span>    eqp_id
+</span></span><span style="display:flex;"><span>    step_seq
+</span></span><span style="display:flex;"><span>    lot_proc_time {
+</span></span><span style="display:flex;"><span>      lot_id
+</span></span><span style="display:flex;"><span>      op_start
+</span></span><span style="display:flex;"><span>      proc_start
+</span></span><span style="display:flex;"><span>      proc_end
+</span></span><span style="display:flex;"><span>      op_end
+</span></span><span style="display:flex;"><span>      load_status
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
         </div>
 
         

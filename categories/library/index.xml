@@ -7,19 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Fri, 26 Jan 2024 00:31:51 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuanyuce.github.io/categories/library/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://kuanyuce.github.io/categories/library/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pandas隨筆</title>
       <link>https://kuanyuce.github.io/blog/pandas/</link>
       <pubDate>Fri, 26 Jan 2024 00:31:51 +0800</pubDate>
-      
       <guid>https://kuanyuce.github.io/blog/pandas/</guid>
-      <description>Pandas 101 由於工作上不定期會碰到pandas, 上次大量接觸pandas已是學生修課時期. 發現lib用法會隨著時間淡忘, 故在此紀錄供快速上手用
-Basic data structure in Pandas Pandas有兩種資料型態：</description>
+      <description>Pandas 101 由於工作上不定期會碰到pandas, 上次大量接觸pandas已是學生修課時期. 發現lib用法會隨著時間淡忘, 故在此紀錄供快速上手用&#xA;Basic data structure in Pandas Pandas有兩種資料型態：</description>
     </item>
-    
   </channel>
 </rss>

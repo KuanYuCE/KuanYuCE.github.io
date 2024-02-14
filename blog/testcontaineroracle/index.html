@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>Ky&#39;s Blog</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Oracle TestContainer使用教學">
+  <meta name="author" content="ky">
+    
+  
+  <meta name="theme-name" content="liva-hugo" />
+  
+  <meta name="generator" content="Hugo 0.121.2">
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="https://kuanyuce.github.io/scss/style.min.css" media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://kuanyuce.github.io/images/favicon.png " type="image/x-icon">
+  <link rel="icon" href="https://kuanyuce.github.io/images/favicon.png " type="image/x-icon">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JW5F1D6DVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JW5F1D6DVR');
+</script>
+
+</head>
+<body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view" href="https://kuanyuce.github.io/"><img class="img-fluid"
+          src="https://kuanyuce.github.io/images/logo.ico" alt="Ky&#39;s Blog"></a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <div class="desktop-view">
+          <ul class="navbar-nav mr-auto">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/KuanYuCE"><i class="ti-github"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/kuanyuchen-a8a63216b/?locale=en_US"><i class="ti-linkedin"></i></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.cakeresume.com/kuan-yu-chen-301ac2"><i class="ti-id-badge"></i></a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <a class="navbar-brand mx-auto desktop-view" href="https://kuanyuce.github.io/"><img class="img-fluid"
+            src="https://kuanyuce.github.io/images/logo.ico" alt="Ky&#39;s Blog"></a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://kuanyuce.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://kuanyuce.github.io/about/">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://kuanyuce.github.io//search" class="h-100">
+              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        
+        <a href="/categories/tool"
+          class="text-primary">Tool</a>
+        
+        <h2>Oracle TestContainer</h2>
+        <div class="mb-3 post-meta">
+          <span>By ky</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>15 February 2024</span>
+          
+        </div>
+        
+        <div class="content mb-5">
+          <h2 id="testcontainer">TestContainer</h2>
+<h3 id="slf4j">SLF4J</h3>
+<h3 id="maven-dependencies">Maven dependencies</h3>
+<p>Testcontainers is distributed as separate JARs with a common version number:</p>
+<p>A core JAR file for core functionality, generic containers and docker-compose support
+A separate JAR file for each of the specialised modules. Each module&rsquo;s documentation describes the Maven/Gradle dependency to add to your project&rsquo;s build.
+For the core library, the latest Maven/Gradle dependency is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>org.testcontainers<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>testcontainers<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>1.19.5<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><h3 id="常見問題">常見問題</h3>
+<ul>
+<li>SLF4J: Failed to load class &ldquo;org.slf4j.impl.StaticLoggerBinder&rdquo;</li>
+<li>SLF4J(W): Defaulting to no-operation (NOP) logger implementation</li>
+<li>Driver not found for mariadb database container: add relative-db jdbc dependency
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;groupId&gt;</span>org.testcontainers<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;artifactId&gt;</span>oracle-xe<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;version&gt;</span>1.19.5<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 --&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;groupId&gt;</span>com.oracle.database.jdbc<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;artifactId&gt;</span>ojdbc11<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;version&gt;</span>23.3.0.23.09<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="jdbc-support">JDBC support</h4>
+<p>You can obtain a temporary database in one of two ways:</p>
+<p>Using a specially modified JDBC URL: after making a very simple modification to your system&rsquo;s JDBC URL string, Testcontainers will provide a disposable stand-in database that can be used without requiring modification to your application code.
+JUnit @Rule/@ClassRule: this mode starts a database inside a container before your tests and tears it down afterwards.</p>
+<h5 id="database-containers-launched-via-jdbc-url-scheme">Database containers launched via JDBC URL scheme</h5>
+<p>As long as you have Testcontainers and the appropriate JDBC driver on your classpath, you can simply modify regular JDBC connection URLs to get a fresh containerized instance of the database each time your application starts up.</p>
+<blockquote>
+<p>We will use /// (host-less URIs) from now on to emphasis the unimportance of the host:port pair.
+From Testcontainers&rsquo; perspective, jdbc:mysql:8.0.36://localhost:3306/databasename and jdbc:mysql:8.0.36:///databasename is the same URI.</p>
+</blockquote>
+<h5 id="jdbc-url-examples">JDBC URL examples</h5>
+<ul>
+<li>Connection String: <code>jdbc:tc:questdb:6.5.3:///databasename</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> org.example;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.zaxxer.hikari.HikariConfig;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.zaxxer.hikari.HikariDataSource;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.junit.Test;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.testcontainers.containers.OracleContainer;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.sql.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainTest</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testOracleWithNoSpecifiedVersion</span>() <span style="color:#66d9ef">throws</span> SQLException {
+</span></span><span style="display:flex;"><span>        OracleContainer oracle <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OracleContainer(<span style="color:#e6db74">&#34;gvenzl/oracle-xe:21-slim-faststart&#34;</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">withDatabaseName</span>(<span style="color:#e6db74">&#34;testDB&#34;</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">withUsername</span>(<span style="color:#e6db74">&#34;testUser&#34;</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">withPassword</span>(<span style="color:#e6db74">&#34;testPassword&#34;</span>);
+</span></span><span style="display:flex;"><span>        oracle.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        performSimpleTest(<span style="color:#e6db74">&#34;jdbc:tc:oracle:21-slim-faststart:///testDB&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">performSimpleTest</span>(String jdbcUrl) <span style="color:#66d9ef">throws</span> SQLException {
+</span></span><span style="display:flex;"><span>        HikariDataSource ds <span style="color:#f92672">=</span> getDataSource(jdbcUrl, 1);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Connection conn = DriverManager.getConnection(jdbcUrl, &#34;testDB&#34;, &#34;testPassword&#34;)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>(Connection conn <span style="color:#f92672">=</span> ds.<span style="color:#a6e22e">getConnection</span>()){
+</span></span><span style="display:flex;"><span>            PreparedStatement table <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(<span style="color:#e6db74">&#34;CREATE TABLE testTest (name varchar(50),&#34;</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;age int)&#34;</span>);
+</span></span><span style="display:flex;"><span>            PreparedStatement insert <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(<span style="color:#e6db74">&#34;INSERT into testTest VALUES (&#39;age&#39;, 5)&#34;</span>);
+</span></span><span style="display:flex;"><span>            PreparedStatement stmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(<span style="color:#e6db74">&#34;SELECT * FROM testTest&#34;</span>);
+</span></span><span style="display:flex;"><span>            table.<span style="color:#a6e22e">executeUpdate</span>();
+</span></span><span style="display:flex;"><span>            insert.<span style="color:#a6e22e">executeUpdate</span>();
+</span></span><span style="display:flex;"><span>            ResultSet rs <span style="color:#f92672">=</span> stmt.<span style="color:#a6e22e">executeQuery</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (rs.<span style="color:#a6e22e">next</span>()){
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(rs.<span style="color:#a6e22e">getString</span>(<span style="color:#e6db74">&#34;name&#34;</span>) <span style="color:#f92672">+</span> rs.<span style="color:#a6e22e">getInt</span>(<span style="color:#e6db74">&#34;age&#34;</span>));
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        ds.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> HikariDataSource <span style="color:#a6e22e">getDataSource</span>(String jdbcUrl, <span style="color:#66d9ef">int</span> poolSize) {
+</span></span><span style="display:flex;"><span>        HikariConfig hikariConfig <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HikariConfig();
+</span></span><span style="display:flex;"><span>        hikariConfig.<span style="color:#a6e22e">setJdbcUrl</span>(jdbcUrl);
+</span></span><span style="display:flex;"><span>        hikariConfig.<span style="color:#a6e22e">setUsername</span>(<span style="color:#e6db74">&#34;testDB&#34;</span>);
+</span></span><span style="display:flex;"><span>        hikariConfig.<span style="color:#a6e22e">setPassword</span>(<span style="color:#e6db74">&#34;testPassword&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> HikariDataSource(hikariConfig);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+        </div>
+
+        
+        
+        <script src="https://utteranc.es/client.js"
+        repo="kuanyuce/KuanYuCE.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  var indexURL = "https://kuanyuce.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://kuanyuce.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/search/mark.js"></script>
+
+<script src="https://kuanyuce.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://kuanyuce.github.io/js/script.min.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<div id="js-cookie-box" class="cookie-box cookie-box-hide">
+	This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button" class="btn btn-sm btn-primary ml-2">I Accept</span>
+</div>
+<script>
+	(function ($) {
+		const cookieBox = document.getElementById('js-cookie-box');
+		const cookieButton = document.getElementById('js-cookie-button');
+		if (!Cookies.get('cookie-box')) {
+			cookieBox.classList.remove('cookie-box-hide');
+			cookieButton.onclick = function () {
+				Cookies.set('cookie-box', true, {
+					expires:  2 
+				});
+				cookieBox.classList.add('cookie-box-hide');
+			};
+		}
+	})(jQuery);
+</script>
+
+
+<style>
+.cookie-box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 9999;
+  padding: 1rem 2rem;
+  background: rgb(71, 71, 71);
+  transition: all .75s cubic-bezier(.19, 1, .22, 1);
+  color: #fdfdfd;
+}
+
+.cookie-box-hide {
+  display: none;
+}
+</style>
+</body>
+</html>

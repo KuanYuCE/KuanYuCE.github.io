@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tool on Ky&#39;s Blog</title>
+    <link>https://kuanyuce.github.io/categories/tool/</link>
+    <description>Recent content in Tool on Ky&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 15 Feb 2024 00:58:36 +0800</lastBuildDate>
+    <atom:link href="https://kuanyuce.github.io/categories/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oracle TestContainer</title>
+      <link>https://kuanyuce.github.io/blog/testcontaineroracle/</link>
+      <pubDate>Thu, 15 Feb 2024 00:58:36 +0800</pubDate>
+      <guid>https://kuanyuce.github.io/blog/testcontaineroracle/</guid>
+      <description>TestContainer SLF4J Maven dependencies Testcontainers is distributed as separate JARs with a common version number:</description>
+    </item>
+  </channel>
+</rss>

@@ -11,7 +11,7 @@
   
   <meta name="theme-name" content="liva-hugo" />
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   <!-- plugins -->
   
@@ -140,7 +140,7 @@
         <div class="content mb-5">
           <h3 id="thread">Thread</h3>
 <p>要執行Thread程式，最簡單的方式就是定義一個class繼承Runnable interface，並呼叫start()開始執行:</p>
-<pre><code class="language-java=" data-lang="java=">package cc.openhome;
+<pre tabindex="0"><code class="language-java=" data-lang="java=">package cc.openhome;
 
 public class Hare implements Runnable {
     private boolean[] flags = {true, false};
@@ -156,10 +156,10 @@ public class Hare implements Runnable {
         while(step &lt; totalStep) {
             var isHareSleep = flags[((int) (Math.random() * 10)) % 2];
             if(isHareSleep) {
-                System.out.println(&quot;兔子睡著了zzzz&quot;);
+                System.out.println(&#34;兔子睡著了zzzz&#34;);
             } else {
                 step += 2;
-                System.out.printf(&quot;兔子跑了 %d 步...%n&quot;, step);
+                System.out.printf(&#34;兔子跑了 %d 步...%n&#34;, step);
             }
         }
     }
@@ -179,7 +179,7 @@ public class TortoiseHareRace2 {
     }
 }
 </code></pre><p>如果要跑多執行緒，可以將流程定義在Runnable的run()方法，或者繼承Thread類別，並重寫override run()方法。實作Runnable比較有彈性，因為類別還可以繼承其他類別。但若繼承了Thread，那該類別就是一種Thread了。</p>
-<pre><code class="language-java=" data-lang="java=">// Runnable實例也可以透過Lambda表示來實作，例如:
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// Runnable實例也可以透過Lambda表示來實作，例如:
 var someThread = new Thread() {
     public void run() {
       // implementation
@@ -202,13 +202,13 @@ var someThread = new Thread(() -&gt; {
 <p>使用Thread建立多執行緒程式，必須親自處理synchronized、物件鎖定、wait()/notify()/notifyAll()等細節，如果需要的是thread pool、讀寫鎖等高階操作，可以使用<strong>java.util.concurrent</strong>套件建立更穩固的併行應用程式</p>
 <h3 id="executor">Executor</h3>
 <p>Thread的建立與系統資源有關，如何建立thread、是否重複使用thread、何時銷毀thread、runnable何時排定給thread執行都是複雜的議題。因此java定義了<strong>java.util.concurrent.Executor</strong>的介面，目的在將Runnable的指定與執行分離，executor介面只定義了一個execute()方法</p>
-<pre><code>package java.util.concurrent
+<pre tabindex="0"><code>package java.util.concurrent
 public interface Executor {
   void execute(Runnable command);
 }
 </code></pre><p><strong><a href="https://givemepass.blogspot.com/2016/10/java-8-lambda.html">Lambda可以當成runnable!</a></strong></p>
 <p>範例:</p>
-<pre><code class="language-java=" data-lang="java=">// Pages.java
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// Pages.java
 package cc.openhome;
 
 import java.net.URI;
@@ -264,7 +264,7 @@ public class Pages {
     }
 }
 </code></pre><p>簡單定義一個Executor</p>
-<pre><code class="language-java=" data-lang="java=">// 這個executor只會逐一下載
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// 這個executor只會逐一下載
 package cc.openhome;
 
 import java.util.concurrent.Executor;
@@ -275,7 +275,7 @@ public class DirectExecutor implements Executor {
      }    
 }
 </code></pre><p>定義一個ThreadPerTaskExecutor</p>
-<pre><code class="language-java=" data-lang="java=">// 這個executor會針對每個網頁啟動一個Thread進行下載
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// 這個executor會針對每個網頁啟動一個Thread進行下載
 package cc.openhome;
 
 import java.util.concurrent.Executor;
@@ -286,24 +286,24 @@ public class ThreadPerTaskExecutor implements Executor {
      }
 }
 </code></pre><p>也可以搭配threadpool使用</p>
-<pre><code class="language-java=" data-lang="java=">package cc.openhome;
+<pre tabindex="0"><code class="language-java=" data-lang="java=">package cc.openhome;
 
 import java.util.concurrent.Executors;
 
 public class Download3 {
     public static void main(String[] args) {
         String[] urls = {
-            &quot;https://openhome.cc/Gossip/Encoding/&quot;,
-            &quot;https://openhome.cc/Gossip/Scala/&quot;,
-            &quot;https://openhome.cc/Gossip/JavaScript/&quot;,
-            &quot;https://openhome.cc/Gossip/Python/&quot;
+            &#34;https://openhome.cc/Gossip/Encoding/&#34;,
+            &#34;https://openhome.cc/Gossip/Scala/&#34;,
+            &#34;https://openhome.cc/Gossip/JavaScript/&#34;,
+            &#34;https://openhome.cc/Gossip/Python/&#34;
         };
         
         String[] fileNames = {
-            &quot;Encoding.html&quot;,
-            &quot;Scala.html&quot;,
-            &quot;JavaScript.html&quot;,
-            &quot;Python.html&quot;
+            &#34;Encoding.html&#34;,
+            &#34;Scala.html&#34;,
+            &#34;JavaScript.html&#34;,
+            &#34;Python.html&#34;
         };
 
         var executorService = Executors.newCachedThreadPool();
@@ -317,7 +317,7 @@ public class Download3 {
 <li>Method Reference</li>
 <li>避免重複撰寫Lambda運算式, 同時能讓程式碼更為清楚</li>
 </ul>
-<pre><code>Arrays.sort(names, (name1, name2)-&gt;StringOrder.byLength(name1, name2));
+<pre tabindex="0"><code>Arrays.sort(names, (name1, name2)-&gt;StringOrder.byLength(name1, name2));
 
 // 可改為
 Arrays.sort(names, StringOrder::byLength);
@@ -340,13 +340,13 @@ Arrays.sort(names, StringOrder::byLength);
 <p><a href="https://klab.tw/2023/01/java-16-record-and-lombok-comparison/">參考</a></p>
 <p>值得注意的是record定義的資料載體可以透過<code>&lt;record&gt;::&lt;attribute&gt;</code>去拿到該record的值</p>
 <p>通常會和of()以及stream()一起使用</p>
-<pre><code class="language-java=" data-lang="java=">public class Demo {
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public class Demo {
         public static void main(String[] args) {
 
             var employees = List.of(
-                    new Employee(&quot;Justin&quot;, 39, Gender.MALE),
-                    new Employee(&quot;Monica&quot;, 36, Gender.FEMALE),
-                    new Employee(&quot;Irene&quot;, 6, Gender.FEMALE)
+                    new Employee(&#34;Justin&#34;, 39, Gender.MALE),
+                    new Employee(&#34;Monica&#34;, 36, Gender.FEMALE),
+                    new Employee(&#34;Irene&#34;, 6, Gender.FEMALE)
             );
 
             var sum = employees.stream()
@@ -374,31 +374,31 @@ Arrays.sort(names, StringOrder::byLength);
     record Employee(String name, Integer age, Gender gender) {}
 }
 </code></pre><h3 id="text-block---java15">text block - java15</h3>
-<pre><code class="language-java=" data-lang="java=">String json = &quot;{\n&quot; +
-        &quot;  \&quot;array\&quot;: [\n&quot; +
-        &quot;    1,\n&quot; +
-        &quot;    2,\n&quot; +
-        &quot;    3\n&quot; +
-        &quot;  ],\n&quot; +
-        &quot;  \&quot;boolean\&quot;: true,\n&quot; +
-        &quot;  \&quot;color\&quot;: \&quot;gold\&quot;,\n&quot; +
-        &quot;  \&quot;null\&quot;: null,\n&quot; +
-        &quot;  \&quot;number\&quot;: 123,\n&quot; +
-        &quot;  \&quot;object\&quot;: {\n&quot; +
-        &quot;    \&quot;a\&quot;: \&quot;b\&quot;,\n&quot; +
-        &quot;    \&quot;c\&quot;: \&quot;d\&quot;\n&quot; +
-        &quot;  },\n&quot; +
-        &quot;  \&quot;string\&quot;: \&quot;Hello World\&quot;\n&quot; +
-        &quot;}&quot;;
+<pre tabindex="0"><code class="language-java=" data-lang="java=">String json = &#34;{\n&#34; +
+        &#34;  \&#34;array\&#34;: [\n&#34; +
+        &#34;    1,\n&#34; +
+        &#34;    2,\n&#34; +
+        &#34;    3\n&#34; +
+        &#34;  ],\n&#34; +
+        &#34;  \&#34;boolean\&#34;: true,\n&#34; +
+        &#34;  \&#34;color\&#34;: \&#34;gold\&#34;,\n&#34; +
+        &#34;  \&#34;null\&#34;: null,\n&#34; +
+        &#34;  \&#34;number\&#34;: 123,\n&#34; +
+        &#34;  \&#34;object\&#34;: {\n&#34; +
+        &#34;    \&#34;a\&#34;: \&#34;b\&#34;,\n&#34; +
+        &#34;    \&#34;c\&#34;: \&#34;d\&#34;\n&#34; +
+        &#34;  },\n&#34; +
+        &#34;  \&#34;string\&#34;: \&#34;Hello World\&#34;\n&#34; +
+        &#34;}&#34;;
 
-String json = &quot;&quot;&quot;
+String json = &#34;&#34;&#34;
 {
-  &quot;b1oolean&quot;: true,
-  &quot;color&quot;: &quot;gold&quot;,
-  &quot;number&quot;: 123,
-  &quot;string&quot;: &quot;Hello World&quot;
+  &#34;b1oolean&#34;: true,
+  &#34;color&#34;: &#34;gold&#34;,
+  &#34;number&#34;: 123,
+  &#34;string&#34;: &#34;Hello World&#34;
 }
-&quot;&quot;&quot;;
+&#34;&#34;&#34;;
 </code></pre><h3 id="map-vs-maptoint">map vs mapToInt</h3>
 <ul>
 <li>兩者返回的數據類型不同
@@ -428,7 +428,7 @@ String json = &quot;&quot;&quot;
 <blockquote>
 <p>不能在record類的body中添加屬性，屬性只能定義在類的括號後面（稱為header）</p>
 </blockquote>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
     //這是不允許的
     private String description;
     
@@ -436,25 +436,25 @@ String json = &quot;&quot;&quot;
 </code></pre><blockquote>
 <p>可以在record類中添加靜態屬性與方法</p>
 </blockquote>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
     //這是允許的
     private static System.Logger logger = System.getLogger(EmployeeDTO.class.getName());
 }
 </code></pre><blockquote>
 <p>可以添加額外的類方法，這是允許的</p>
 </blockquote>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
     //這是允許的
     public String toJson(){
         //...
-        return &quot;&quot;;
+        return &#34;&#34;;
     }
 }
 </code></pre><p>比如，你可以添加一個方法，有時候我們需要將數據對象轉換為JSON來傳輸或存儲，那就添加一個toJson方法就好了.</p>
 <blockquote>
 <p>可以覆蓋默認生成的一些東西</p>
 </blockquote>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
     //這是允許的
     public int getAge(){
         return age;
@@ -464,7 +464,7 @@ String json = &quot;&quot;&quot;
 <p>可以在方法中定義Local Record Classes</p>
 </blockquote>
 <p>在方法內部，你可以定義一個局部本地的record類</p>
-<pre><code class="language-java=" data-lang="java=">public void calculateLocation(double x,double y){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public void calculateLocation(double x,double y){
     //定義一個本地record類
     record Point(double x, double y) {}
 
@@ -475,7 +475,7 @@ String json = &quot;&quot;&quot;
 <blockquote>
 <p>Java中的所有record類，都默認實現了Record接口</p>
 </blockquote>
-<pre><code class="language-java=" data-lang="java=">@Test
+<pre tabindex="0"><code class="language-java=" data-lang="java=">@Test
 void testRecord(){
     record Point(double x,double y){}
     var point = new Point(0,0);
@@ -506,7 +506,7 @@ void testRecord(){
 <li>擦拭後都是 Object 類型，沒得判斷</li>
 <li>不能使用在靜態，泛型創建對象時才能確定，但靜態方法、參數，是不用加載就可以使用 (泛型方法則可以，因為泛型方法是呼叫後才加載)</li>
 </ul>
-<pre><code class="language-java=" data-lang="java=">// 假如我们定义一个泛型类Generic
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// 假如我们定义一个泛型类Generic
 class Generic&lt;T&gt; {
     private T obj;
 
@@ -542,7 +542,7 @@ class Generic {
 <p>在泛型中並不是所有的擦除都會變成 Object 的，當泛型有限制性，Test<!-- raw HTML omitted -->，則會被擦除成 Apple</p>
 </li>
 </ul>
-<pre><code class="language-java=" data-lang="java=">List list = new ArrayList&lt;Integer\&gt;();
+<pre tabindex="0"><code class="language-java=" data-lang="java=">List list = new ArrayList&lt;Integer\&gt;();
 List&lt;String&gt; list2 = list;
 </code></pre><blockquote>
 <p>擦除過後 ArrayList<!-- raw HTML omitted --> 轉為 Array List，List<!-- raw HTML omitted --> 轉為 List</p>

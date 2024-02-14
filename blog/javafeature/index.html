@@ -11,7 +11,7 @@
   
   <meta name="theme-name" content="liva-hugo" />
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   <!-- plugins -->
   
@@ -136,7 +136,8 @@
         </div>
         
         <div class="content mb-5">
-          <h2 id="java好用方法">Java好用方法</h2>
+          <hr>
+<h2 id="java好用方法">Java好用方法</h2>
 <ol>
 <li>
 <p>Method Reference (Java8)</p>
@@ -146,8 +147,8 @@
 <li>用法:
 <ul>
 <li>
-<pre><code class="language-java=" data-lang="java=">  Arrays.sort(names, (name1, name2)-&gt;StringOrder.byLength(name1, name2));
-        
+<pre tabindex="0"><code class="language-java=" data-lang="java=">  Arrays.sort(names, (name1, name2)-&gt;StringOrder.byLength(name1, name2));
+
   // 透過Method Reference改為
   Arrays.sort(names, StringOrder::byLength);
 </code></pre></li>
@@ -180,31 +181,31 @@
 <ul>
 <li>原本text在java會以 <strong>+</strong> 和 <strong>\n</strong> 呈現, 但是在java15後可以用text block的方式呈現</li>
 <li>用法:
-<pre><code class="language-java=" data-lang="java=">String json = &quot;{\n&quot; +
-        &quot;  \&quot;array\&quot;: [\n&quot; +
-        &quot;    1,\n&quot; +
-        &quot;    2,\n&quot; +
-        &quot;    3\n&quot; +
-        &quot;  ],\n&quot; +
-        &quot;  \&quot;boolean\&quot;: true,\n&quot; +
-        &quot;  \&quot;color\&quot;: \&quot;gold\&quot;,\n&quot; +
-        &quot;  \&quot;null\&quot;: null,\n&quot; +
-        &quot;  \&quot;number\&quot;: 123,\n&quot; +
-        &quot;  \&quot;object\&quot;: {\n&quot; +
-        &quot;    \&quot;a\&quot;: \&quot;b\&quot;,\n&quot; +
-        &quot;    \&quot;c\&quot;: \&quot;d\&quot;\n&quot; +
-        &quot;  },\n&quot; +
-        &quot;  \&quot;string\&quot;: \&quot;Hello World\&quot;\n&quot; +
-        &quot;}&quot;;
+<pre tabindex="0"><code class="language-java=" data-lang="java=">String json = &#34;{\n&#34; +
+        &#34;  \&#34;array\&#34;: [\n&#34; +
+        &#34;    1,\n&#34; +
+        &#34;    2,\n&#34; +
+        &#34;    3\n&#34; +
+        &#34;  ],\n&#34; +
+        &#34;  \&#34;boolean\&#34;: true,\n&#34; +
+        &#34;  \&#34;color\&#34;: \&#34;gold\&#34;,\n&#34; +
+        &#34;  \&#34;null\&#34;: null,\n&#34; +
+        &#34;  \&#34;number\&#34;: 123,\n&#34; +
+        &#34;  \&#34;object\&#34;: {\n&#34; +
+        &#34;    \&#34;a\&#34;: \&#34;b\&#34;,\n&#34; +
+        &#34;    \&#34;c\&#34;: \&#34;d\&#34;\n&#34; +
+        &#34;  },\n&#34; +
+        &#34;  \&#34;string\&#34;: \&#34;Hello World\&#34;\n&#34; +
+        &#34;}&#34;;
 
-String json = &quot;&quot;&quot;
+String json = &#34;&#34;&#34;
     {
-    &quot;b1oolean&quot;: true,
-    &quot;color&quot;: &quot;gold&quot;,
-    &quot;number&quot;: 123,
-    &quot;string&quot;: &quot;Hello World&quot;
+    &#34;b1oolean&#34;: true,
+    &#34;color&#34;: &#34;gold&#34;,
+    &#34;number&#34;: 123,
+    &#34;string&#34;: &#34;Hello World&#34;
     }
-&quot;&quot;&quot;;
+&#34;&#34;&#34;;
 </code></pre></li>
 </ul>
 </li>
@@ -214,13 +215,13 @@ String json = &quot;&quot;&quot;
 <p>POJO/Lombok/Record的用法可參考<a href="https://klab.tw/2023/01/java-16-record-and-lombok-comparison/">此篇</a></p>
 <p>值得注意的是record定義的資料載體可以透過<code>&lt;record&gt;::&lt;attribute&gt;</code>去拿到該record的值 (例如下面範例的Employee::age)</p>
 <p>通常會和of()以及stream()一起使用</p>
-<pre><code class="language-java=" data-lang="java=">public class Demo {
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public class Demo {
         public static void main(String[] args) {
 
             var employees = List.of(
-                    new Employee(&quot;Justin&quot;, 39, Gender.MALE),
-                    new Employee(&quot;Monica&quot;, 36, Gender.FEMALE),
-                    new Employee(&quot;Irene&quot;, 6, Gender.FEMALE)
+                    new Employee(&#34;Justin&#34;, 39, Gender.MALE),
+                    new Employee(&#34;Monica&#34;, 36, Gender.FEMALE),
+                    new Employee(&#34;Irene&#34;, 6, Gender.FEMALE)
             );
 
             var sum = employees.stream()
@@ -274,32 +275,32 @@ String json = &quot;&quot;&quot;
 <ol>
 <li>不能在record類的body中添加屬性，屬性只能定義在類的括號後面（稱為header）</li>
 </ol>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
     //這是不允許的
     private String description;
 }
 </code></pre><ol start="2">
 <li>可以在record類中添加靜態屬性與方法</li>
 </ol>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
     //這是允許的
     private static System.Logger logger = System.getLogger(EmployeeDTO.class.getName());
 }
 </code></pre><ol start="3">
 <li>可以添加額外的類方法，這是允許的</li>
 </ol>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
     //這是允許的
     public String toJson(){
         //...
-        return &quot;&quot;;
+        return &#34;&#34;;
     }
 }
 </code></pre><p>比如，你可以添加一個方法，有時候我們需要將數據對象轉換為JSON來傳輸或存儲，那就添加一個toJson方法就好了.</p>
 <ol start="4">
 <li>可以覆蓋默認生成的一些東西</li>
 </ol>
-<pre><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public record EmployeeDTO(String name,String idCard,int age){
     //這是允許的
     public int getAge(){
         return age;
@@ -309,7 +310,7 @@ String json = &quot;&quot;&quot;
 <li>可以在方法中定義Local Record Classes</li>
 </ol>
 <p>在方法內部，你可以定義一個局部本地的record類</p>
-<pre><code class="language-java=" data-lang="java=">public void calculateLocation(double x,double y){
+<pre tabindex="0"><code class="language-java=" data-lang="java=">public void calculateLocation(double x,double y){
     //定義一個本地record類
     record Point(double x, double y) {}
 
@@ -320,7 +321,7 @@ String json = &quot;&quot;&quot;
 <ol start="6">
 <li>Java中的所有record類，默認都實現了Record接口</li>
 </ol>
-<pre><code class="language-java=" data-lang="java=">@Test
+<pre tabindex="0"><code class="language-java=" data-lang="java=">@Test
 void testRecord(){
     record Point(double x,double y){}
     var point = new Point(0,0);
@@ -330,22 +331,22 @@ void testRecord(){
 </code></pre><h2 id="string">String</h2>
 <p>Java的字串處理起來相對麻煩, 因為java不支援透過 <strong>[]</strong> 直接存取字串內的字元, 而且無法修改!</p>
 <p>一定要轉換成char[]類型後才能修改</p>
-<pre><code class="language-java=" data-lang="java=">        String s1 = &quot;This is a sample!&quot;;
+<pre tabindex="0"><code class="language-java=" data-lang="java=">        String s1 = &#34;This is a sample!&#34;;
         char c = s1.charAt(8);
 
         char[] chars = s1.toCharArray();
-        chars[8] = 'n';
+        chars[8] = &#39;n&#39;;
         String s2 = new String(chars);
         System.out.println(s2);   // 輸出This is n sample!
 </code></pre><p>不能直接修改Java的字串, 要先用toCharArray轉換成Char[]類型的array才行, 改完後還要再轉換回String類型</p>
 <p>另外, 雖然字串支援用 <strong>+</strong> 來串接字元, 但是不建議在for loop內使用, 可以改成用StringBuilder</p>
-<pre><code class="language-java=" data-lang="java=">        StringBuilder sb = new StringBuilder();
-        for (char c = 'a'; c &lt; 'f'; c++) {
+<pre tabindex="0"><code class="language-java=" data-lang="java=">        StringBuilder sb = new StringBuilder();
+        for (char c = &#39;a&#39;; c &lt; &#39;f&#39;; c++) {
             sb.append(c);
         }
         String result = sb.toString();
         System.out.println(result);
-</code></pre><p>另外注意的是java會用單引號或雙引號來判斷文字是char or string的資料型態. (&lsquo;c'是char, &ldquo;c&quot;是String)</p>
+</code></pre><p>另外注意的是java會用單引號或雙引號來判斷文字是char or string的資料型態. (&lsquo;c&rsquo;是char, &ldquo;c&quot;是String)</p>
 
         </div>
 

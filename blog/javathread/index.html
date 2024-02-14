@@ -11,7 +11,7 @@
   
   <meta name="theme-name" content="liva-hugo" />
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   <!-- plugins -->
   
@@ -140,7 +140,7 @@
         <div class="content mb-5">
           <h3 id="thread">Thread</h3>
 <p>要執行Thread程式，最簡單的方式就是定義一個class繼承Runnable interface，並呼叫start()開始執行:</p>
-<pre><code class="language-java=" data-lang="java=">package cc.openhome;
+<pre tabindex="0"><code class="language-java=" data-lang="java=">package cc.openhome;
 
 public class Hare implements Runnable {
     private boolean[] flags = {true, false};
@@ -156,10 +156,10 @@ public class Hare implements Runnable {
         while(step &lt; totalStep) {
             var isHareSleep = flags[((int) (Math.random() * 10)) % 2];
             if(isHareSleep) {
-                System.out.println(&quot;兔子睡著了zzzz&quot;);
+                System.out.println(&#34;兔子睡著了zzzz&#34;);
             } else {
                 step += 2;
-                System.out.printf(&quot;兔子跑了 %d 步...%n&quot;, step);
+                System.out.printf(&#34;兔子跑了 %d 步...%n&#34;, step);
             }
         }
     }
@@ -179,7 +179,7 @@ public class TortoiseHareRace2 {
     }
 }
 </code></pre><p>如果要跑多執行緒，可以將流程定義在Runnable的run()方法，或者繼承Thread類別，並重寫override run()方法。實作Runnable比較有彈性，因為類別還可以繼承其他類別。但若繼承了Thread，那該類別就是一種Thread了。</p>
-<pre><code class="language-java=" data-lang="java=">// Runnable實例也可以透過Lambda表示來實作，例如:
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// Runnable實例也可以透過Lambda表示來實作，例如:
 var someThread = new Thread() {
     public void run() {
       // implementation
@@ -202,13 +202,13 @@ var someThread = new Thread(() -&gt; {
 <p>使用Thread建立多執行緒程式，必須親自處理synchronized、物件鎖定、wait()/notify()/notifyAll()等細節，如果需要的是thread pool、讀寫鎖等高階操作，可以使用<strong>java.util.concurrent</strong>套件建立更穩固的併行應用程式</p>
 <h3 id="executor">Executor</h3>
 <p>Thread的建立與系統資源有關，如何建立thread、是否重複使用thread、何時銷毀thread、runnable何時排定給thread執行都是複雜的議題。因此java定義了<strong>java.util.concurrent.Executor</strong>的介面，目的在將Runnable的指定與執行分離，executor介面只定義了一個execute()方法</p>
-<pre><code>package java.util.concurrent
+<pre tabindex="0"><code>package java.util.concurrent
 public interface Executor {
   void execute(Runnable command);
 }
 </code></pre><p><strong><a href="https://givemepass.blogspot.com/2016/10/java-8-lambda.html">Lambda可以當成runnable!</a></strong></p>
 <p>範例:</p>
-<pre><code class="language-java=" data-lang="java=">// Pages.java
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// Pages.java
 package cc.openhome;
 
 import java.net.URI;
@@ -264,7 +264,7 @@ public class Pages {
     }
 }
 </code></pre><p>簡單定義一個Executor</p>
-<pre><code class="language-java=" data-lang="java=">// 這個executor只會逐一下載
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// 這個executor只會逐一下載
 package cc.openhome;
 
 import java.util.concurrent.Executor;
@@ -275,7 +275,7 @@ public class DirectExecutor implements Executor {
      }    
 }
 </code></pre><p>定義一個ThreadPerTaskExecutor</p>
-<pre><code class="language-java=" data-lang="java=">// 這個executor會針對每個網頁啟動一個Thread進行下載
+<pre tabindex="0"><code class="language-java=" data-lang="java=">// 這個executor會針對每個網頁啟動一個Thread進行下載
 package cc.openhome;
 
 import java.util.concurrent.Executor;
@@ -286,24 +286,24 @@ public class ThreadPerTaskExecutor implements Executor {
      }
 }
 </code></pre><p>也可以搭配threadpool使用</p>
-<pre><code class="language-java=" data-lang="java=">package cc.openhome;
+<pre tabindex="0"><code class="language-java=" data-lang="java=">package cc.openhome;
 
 import java.util.concurrent.Executors;
 
 public class Download3 {
     public static void main(String[] args) {
         String[] urls = {
-            &quot;https://openhome.cc/Gossip/Encoding/&quot;,
-            &quot;https://openhome.cc/Gossip/Scala/&quot;,
-            &quot;https://openhome.cc/Gossip/JavaScript/&quot;,
-            &quot;https://openhome.cc/Gossip/Python/&quot;
+            &#34;https://openhome.cc/Gossip/Encoding/&#34;,
+            &#34;https://openhome.cc/Gossip/Scala/&#34;,
+            &#34;https://openhome.cc/Gossip/JavaScript/&#34;,
+            &#34;https://openhome.cc/Gossip/Python/&#34;
         };
         
         String[] fileNames = {
-            &quot;Encoding.html&quot;,
-            &quot;Scala.html&quot;,
-            &quot;JavaScript.html&quot;,
-            &quot;Python.html&quot;
+            &#34;Encoding.html&#34;,
+            &#34;Scala.html&#34;,
+            &#34;JavaScript.html&#34;,
+            &#34;Python.html&#34;
         };
 
         var executorService = Executors.newCachedThreadPool();
