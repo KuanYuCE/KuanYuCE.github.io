@@ -143,32 +143,32 @@
 <p>A core JAR file for core functionality, generic containers and docker-compose support
 A separate JAR file for each of the specialised modules. Each module&rsquo;s documentation describes the Maven/Gradle dependency to add to your project&rsquo;s build.
 For the core library, the latest Maven/Gradle dependency is as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>org.testcontainers<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>testcontainers<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>1.19.5<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span></code></pre></div><h3 id="常見問題">常見問題</h3>
+<pre tabindex="0"><code class="language-xml=" data-lang="xml=">&lt;dependency&gt;
+    &lt;groupId&gt;org.testcontainers&lt;/groupId&gt;
+    &lt;artifactId&gt;testcontainers&lt;/artifactId&gt;
+    &lt;version&gt;1.19.5&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="常見問題">常見問題</h3>
 <ul>
 <li>SLF4J: Failed to load class &ldquo;org.slf4j.impl.StaticLoggerBinder&rdquo;</li>
 <li>SLF4J(W): Defaulting to no-operation (NOP) logger implementation</li>
 <li>Driver not found for mariadb database container: add relative-db jdbc dependency
 <ul>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;groupId&gt;</span>org.testcontainers<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;artifactId&gt;</span>oracle-xe<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;version&gt;</span>1.19.5<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 --&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependency&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;groupId&gt;</span>com.oracle.database.jdbc<span style="color:#f92672">&lt;/groupId&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;artifactId&gt;</span>ojdbc11<span style="color:#f92672">&lt;/artifactId&gt;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;version&gt;</span>23.3.0.23.09<span style="color:#f92672">&lt;/version&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependency&gt;</span>
-</span></span></code></pre></div></li>
+<pre tabindex="0"><code class="language-xml=" data-lang="xml=">  &lt;dependency&gt;
+      &lt;groupId&gt;org.testcontainers&lt;/groupId&gt;
+      &lt;artifactId&gt;oracle-xe&lt;/artifactId&gt;
+      &lt;version&gt;1.19.5&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+  &lt;!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;com.oracle.database.jdbc&lt;/groupId&gt;
+      &lt;artifactId&gt;ojdbc11&lt;/artifactId&gt;
+      &lt;version&gt;23.3.0.23.09&lt;/version&gt;
+  &lt;/dependency&gt;
+</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -186,57 +186,57 @@ From Testcontainers&rsquo; perspective, jdbc:mysql:8.0.36://localhost:3306/datab
 <ul>
 <li>Connection String: <code>jdbc:tc:questdb:6.5.3:///databasename</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> org.example;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.zaxxer.hikari.HikariConfig;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> com.zaxxer.hikari.HikariDataSource;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.junit.Test;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.testcontainers.containers.OracleContainer;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.sql.*;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainTest</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testOracleWithNoSpecifiedVersion</span>() <span style="color:#66d9ef">throws</span> SQLException {
-</span></span><span style="display:flex;"><span>        OracleContainer oracle <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OracleContainer(<span style="color:#e6db74">&#34;gvenzl/oracle-xe:21-slim-faststart&#34;</span>)
-</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">withDatabaseName</span>(<span style="color:#e6db74">&#34;testDB&#34;</span>)
-</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">withUsername</span>(<span style="color:#e6db74">&#34;testUser&#34;</span>)
-</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">withPassword</span>(<span style="color:#e6db74">&#34;testPassword&#34;</span>);
-</span></span><span style="display:flex;"><span>        oracle.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        performSimpleTest(<span style="color:#e6db74">&#34;jdbc:tc:oracle:21-slim-faststart:///testDB&#34;</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">performSimpleTest</span>(String jdbcUrl) <span style="color:#66d9ef">throws</span> SQLException {
-</span></span><span style="display:flex;"><span>        HikariDataSource ds <span style="color:#f92672">=</span> getDataSource(jdbcUrl, 1);
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Connection conn = DriverManager.getConnection(jdbcUrl, &#34;testDB&#34;, &#34;testPassword&#34;)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>(Connection conn <span style="color:#f92672">=</span> ds.<span style="color:#a6e22e">getConnection</span>()){
-</span></span><span style="display:flex;"><span>            PreparedStatement table <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(<span style="color:#e6db74">&#34;CREATE TABLE testTest (name varchar(50),&#34;</span> <span style="color:#f92672">+</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;age int)&#34;</span>);
-</span></span><span style="display:flex;"><span>            PreparedStatement insert <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(<span style="color:#e6db74">&#34;INSERT into testTest VALUES (&#39;age&#39;, 5)&#34;</span>);
-</span></span><span style="display:flex;"><span>            PreparedStatement stmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(<span style="color:#e6db74">&#34;SELECT * FROM testTest&#34;</span>);
-</span></span><span style="display:flex;"><span>            table.<span style="color:#a6e22e">executeUpdate</span>();
-</span></span><span style="display:flex;"><span>            insert.<span style="color:#a6e22e">executeUpdate</span>();
-</span></span><span style="display:flex;"><span>            ResultSet rs <span style="color:#f92672">=</span> stmt.<span style="color:#a6e22e">executeQuery</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (rs.<span style="color:#a6e22e">next</span>()){
-</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(rs.<span style="color:#a6e22e">getString</span>(<span style="color:#e6db74">&#34;name&#34;</span>) <span style="color:#f92672">+</span> rs.<span style="color:#a6e22e">getInt</span>(<span style="color:#e6db74">&#34;age&#34;</span>));
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        ds.<span style="color:#a6e22e">close</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> HikariDataSource <span style="color:#a6e22e">getDataSource</span>(String jdbcUrl, <span style="color:#66d9ef">int</span> poolSize) {
-</span></span><span style="display:flex;"><span>        HikariConfig hikariConfig <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HikariConfig();
-</span></span><span style="display:flex;"><span>        hikariConfig.<span style="color:#a6e22e">setJdbcUrl</span>(jdbcUrl);
-</span></span><span style="display:flex;"><span>        hikariConfig.<span style="color:#a6e22e">setUsername</span>(<span style="color:#e6db74">&#34;testDB&#34;</span>);
-</span></span><span style="display:flex;"><span>        hikariConfig.<span style="color:#a6e22e">setPassword</span>(<span style="color:#e6db74">&#34;testPassword&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> HikariDataSource(hikariConfig);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+<pre tabindex="0"><code class="language-java=" data-lang="java=">package org.example;
+
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
+import org.junit.Test;
+import org.testcontainers.containers.OracleContainer;
+
+import java.sql.*;
+
+public class MainTest {
+    @Test
+    public void testOracleWithNoSpecifiedVersion() throws SQLException {
+        OracleContainer oracle = new OracleContainer(&#34;gvenzl/oracle-xe:21-slim-faststart&#34;)
+                .withDatabaseName(&#34;testDB&#34;)
+                .withUsername(&#34;testUser&#34;)
+                .withPassword(&#34;testPassword&#34;);
+        oracle.start();
+        performSimpleTest(&#34;jdbc:tc:oracle:21-slim-faststart:///testDB&#34;);
+    }
+
+    private void performSimpleTest(String jdbcUrl) throws SQLException {
+        HikariDataSource ds = getDataSource(jdbcUrl, 1);
+        //Connection conn = DriverManager.getConnection(jdbcUrl, &#34;testDB&#34;, &#34;testPassword&#34;)
+        try(Connection conn = ds.getConnection()){
+            PreparedStatement table = conn.prepareStatement(&#34;CREATE TABLE testTest (name varchar(50),&#34; +
+                    &#34;age int)&#34;);
+            PreparedStatement insert = conn.prepareStatement(&#34;INSERT into testTest VALUES (&#39;age&#39;, 5)&#34;);
+            PreparedStatement stmt = conn.prepareStatement(&#34;SELECT * FROM testTest&#34;);
+            table.executeUpdate();
+            insert.executeUpdate();
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                System.out.println(rs.getString(&#34;name&#34;) + rs.getInt(&#34;age&#34;));
+            }
+        }
+        ds.close();
+    }
+
+    private HikariDataSource getDataSource(String jdbcUrl, int poolSize) {
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setJdbcUrl(jdbcUrl);
+        hikariConfig.setUsername(&#34;testDB&#34;);
+        hikariConfig.setPassword(&#34;testPassword&#34;);
+
+        return new HikariDataSource(hikariConfig);
+    }
+}
+</code></pre>
         </div>
 
         
