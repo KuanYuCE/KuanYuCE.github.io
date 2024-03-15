@@ -11,7 +11,7 @@
   
   <meta name="theme-name" content="liva-hugo" />
   
-  <meta name="generator" content="Hugo 0.121.2">
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -51,76 +51,67 @@
 <!-- preloader end -->
 <!-- navigation -->
 <header class="navigation">
-  <div class="container">
-    
-    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
-      <a class="navbar-brand mobile-view" href="https://kuanyuce.github.io/"><img class="img-fluid"
-          src="https://kuanyuce.github.io/images/logo.ico" alt="Ky&#39;s Blog"></a>
-      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
-        <i class="ti-menu"></i>
-      </button>
-
-      <div class="collapse navbar-collapse text-center" id="navigation">
-        <div class="desktop-view">
-          <ul class="navbar-nav mr-auto">
+  <div class="container-fluid border-bottom fixed-top nav-background-color">
+    <div class="container">
+      
+      <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+        <a class="navbar-brand mobile-view" href="https://kuanyuce.github.io/"><img class="img-fluid"
+            src="https://kuanyuce.github.io/images/logo.ico" alt="Ky&#39;s Blog"></a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+          <i class="ti-menu"></i>
+        </button>
+  
+        <div class="collapse navbar-collapse text-center" id="navigation">
+          <div class="desktop-view">
+            <ul class="navbar-nav mr-auto">
+  
+            </ul>
+          </div>
+  
+          <a class="navbar-brand mx-auto desktop-view" href="https://kuanyuce.github.io/"><img class="img-fluid"
+              src="https://kuanyuce.github.io/images/logo.ico" alt="Ky&#39;s Blog"></a>
+  
+          <ul class="navbar-nav">
+            
             
             <li class="nav-item">
-              <a class="nav-link" href="https://github.com/KuanYuCE"><i class="ti-github"></i></a>
+              <a class="nav-link" href="https://kuanyuce.github.io/">所有文章</a>
             </li>
             
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.linkedin.com/in/kuanyuchen-a8a63216b/?locale=en_US"><i class="ti-linkedin"></i></a>
-            </li>
+            
             
             <li class="nav-item">
-              <a class="nav-link" href="https://www.cakeresume.com/kuan-yu-chen-301ac2"><i class="ti-id-badge"></i></a>
+              <a class="nav-link" href="https://kuanyuce.github.io/about/">關於我</a>
             </li>
+            
             
           </ul>
-        </div>
-
-        <a class="navbar-brand mx-auto desktop-view" href="https://kuanyuce.github.io/"><img class="img-fluid"
-            src="https://kuanyuce.github.io/images/logo.ico" alt="Ky&#39;s Blog"></a>
-
-        <ul class="navbar-nav">
+  
           
-          
-          <li class="nav-item">
-            <a class="nav-link" href="https://kuanyuce.github.io/">Home</a>
-          </li>
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="https://kuanyuce.github.io/about/">About</a>
-          </li>
-          
-          
-        </ul>
-
-        
-        <!-- search -->
-        <div class="search pl-lg-4">
-          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
-          <div class="search-wrapper">
-            <form action="https://kuanyuce.github.io//search" class="h-100">
-              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
-            </form>
-            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+          <!-- search -->
+          <div class="search pl-lg-4">
+            <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
+            <div class="search-wrapper">
+              <form action="https://kuanyuce.github.io//search" class="h-100">
+                <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
+              </form>
+              <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
+            </div>
           </div>
+          
+  
+          
         </div>
-        
-
-        
-      </div>
-    </nav>
+      </nav>
+    </div>
   </div>
+
 </header>
 <!-- /navigation -->
 
 
 <section class="section-sm">
-  <div class="container">
+  <div class="container pl-4 pr-4">
     <div class="row">
       
       <div class="col-lg-4">
@@ -128,18 +119,18 @@
     
     <div class="widget">
       
-      <h4 class="widget-title">About Me</h4>
+      <h4 class="widget-title">關於我</h4>
       
       <img src="https://kuanyuce.github.io/images/profile.png" alt=""
         class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4">
       
       <p>A software engineer with 3+ years of experience in Backend and Data Engineering.</p>
-      <a href="https://kuanyuce.github.io/about/" class="btn btn-outline-primary">Know More</a>
+      <a href="https://kuanyuce.github.io/about/" class="btn btn-outline-primary">了解更多</a>
       
     </div>
     
     <div class="widget">
-      <h4 class="widget-title">Category</h4>
+      <h4 class="widget-title">文章分類</h4>
       <ul class="list-unstyled">
         <li><a
             href="/categories/database/">Database</a>
@@ -155,18 +146,21 @@
     
     <div class="widget">
       <h4 class="widget-title">Tag</h4>
-      <ul class="list-inline">
-        <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-            href="/tags/java/">Java</a></li>
-        <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-            href="/tags/tool/">Tool</a></li>
-        <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-            href="/tags/%e8%87%aa%e5%ad%b8%e7%ad%86%e8%a8%98/">自學筆記</a></li>
+      <ul class="list-unstyled">
+        <li><a
+            href="/tags/java/">Java</a>
+        </li>
+        <li><a
+            href="/tags/tool/">Tool</a>
+        </li>
+        <li><a
+            href="/tags/%e8%87%aa%e5%ad%b8%e7%ad%86%e8%a8%98/">自學筆記</a>
+        </li>
       </ul>
     </div>
     
     <div class="widget">
-      <h4 class="widget-title">Social</h4>
+      <h4 class="widget-title">聯絡我</h4>
       <ul class="list-inline social-links">
         
         <li class="list-inline-item"><a href="https://github.com/KuanYuCE"><i class="ti-github"></i></a></li>
@@ -193,7 +187,7 @@
         <a href="/categories/tool"
             class="text-primary">Tool</a>
         
-        <a href="https://kuanyuce.github.io/blog/testcontaineroracle/" class="h5 d-block my-3">Oracle TestContainer</a>
+        <a href="https://kuanyuce.github.io/blog/oraclecontainer/" class="h5 d-block my-3">Oracle TestContainer</a>
         <div class="mb-3 post-meta">
             <span>By ky</span>
             
@@ -202,7 +196,7 @@
             
         </div>
         <p class="card-text">Oracle TestContainer使用教學</p>
-        <a href="https://kuanyuce.github.io/blog/testcontaineroracle/" class="btn btn-outline-primary">read more</a>
+        <a href="https://kuanyuce.github.io/blog/oraclecontainer/" class="btn btn-outline-primary">read more</a>
         </div>
     </article>
 </div>
@@ -214,6 +208,8 @@
       
       <div class="col-12 mt-5">
         
+
+
       </div>
     </div>
   </div>

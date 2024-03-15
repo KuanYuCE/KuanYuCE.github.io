@@ -7,48 +7,68 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Thu, 15 Feb 2024 00:58:36 +0800</lastBuildDate>
-    <atom:link href="https://kuanyuce.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://kuanyuce.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Oracle TestContainer</title>
-      <link>https://kuanyuce.github.io/blog/testcontaineroracle/</link>
+      <link>https://kuanyuce.github.io/blog/oraclecontainer/</link>
       <pubDate>Thu, 15 Feb 2024 00:58:36 +0800</pubDate>
-      <guid>https://kuanyuce.github.io/blog/testcontaineroracle/</guid>
-      <description>TestContainer SLF4J Maven dependencies Testcontainers is distributed as separate JARs with a common version number:</description>
+      
+      <guid>https://kuanyuce.github.io/blog/oraclecontainer/</guid>
+      <description>SLF4J  Maven dependencies Testcontainers is distributed as separate JARs with a common version number:</description>
     </item>
+    
     <item>
       <title>Java Generic</title>
       <link>https://kuanyuce.github.io/blog/javageneric/</link>
       <pubDate>Sat, 27 Jan 2024 18:22:07 +0800</pubDate>
+      
       <guid>https://kuanyuce.github.io/blog/javageneric/</guid>
-      <description>Generic Static method 要宣告靜態方法的泛型時, 記得要在static後面加上類別型態&#xA;原因是因為泛型這機制其實是runtime的時候動態的幫你轉換型別&#xA;所以實際上你在宣告(使用)的時候, 會先寫好型別,&#xA;接著在new object的時候就會根據你宣告的型別做轉換</description>
+      <description>靜態方法 Static method 要宣告靜態方法的泛型時, 記得要在static後面加上類別型態
+原因是因為泛型這機制其實是runtime的時候動態的幫你轉換型別
+所以實際上你在宣告(使用)的時候, 會先寫好型別,
+接著在new object的時候就會根據你宣告的型別做轉換</description>
     </item>
+    
     <item>
       <title>Java好用的feature</title>
       <link>https://kuanyuce.github.io/blog/javafeature/</link>
       <pubDate>Sat, 27 Jan 2024 18:22:07 +0800</pubDate>
+      
       <guid>https://kuanyuce.github.io/blog/javafeature/</guid>
-      <description>Java好用方法 Method Reference (Java8)&#xA;使用: 以雙冒號double colon(::)呈現 目的: 避免重複撰寫Lambda運算式, 同時能讓程式碼更為清楚 用法: Arrays.</description>
+      <description>Java好用方法   Method Reference (Java8)
+ 使用: 以雙冒號double colon(::)呈現 目的: 避免重複撰寫Lambda運算式, 同時能讓程式碼更為清楚 用法:   Arrays.</description>
     </item>
+    
     <item>
       <title>MySQL隨筆</title>
       <link>https://kuanyuce.github.io/blog/mysql/</link>
       <pubDate>Mon, 22 Jan 2024 00:24:47 +0800</pubDate>
+      
       <guid>https://kuanyuce.github.io/blog/mysql/</guid>
-      <description>啟動MySQL伺服器的方式 mysqld mysqld_safe mysql.server mysqld_multi 檢查Char set 編碼: 字元(看得懂的字) -&amp;gt; 二進位資料 解碼: 二進位資料 -&amp;gt; 字元 一般來說，用戶端encode request string的時候使用的charset和OS當前用的charset會一致</description>
+      <description>啟動MySQL伺服器的方式  mysqld mysqld_safe mysql.server mysqld_multi  檢查Char set 編碼: 字元(看得懂的字) -&amp;gt; 二進位資料 解碼: 二進位資料 -&amp;gt; 字元 一般來說，用戶端encode request string的時候使用的charset和OS當前用的charset會一致</description>
     </item>
+    
     <item>
       <title>Java Thread</title>
       <link>https://kuanyuce.github.io/blog/javathread/</link>
       <pubDate>Sun, 21 Jan 2024 23:07:47 +0800</pubDate>
+      
       <guid>https://kuanyuce.github.io/blog/javathread/</guid>
-      <description>Thread 要執行Thread程式，最簡單的方式就是定義一個class繼承Runnable interface，並呼叫start()開始執行:&#xA;package cc.openhome; public class Hare implements Runnable { private boolean[] flags = {true, false}; private int totalStep; private int step; public Hare(int totalStep) { this.</description>
+      <description>Thread 要執行Thread程式，最簡單的方式就是定義一個class繼承Runnable interface，並呼叫start()開始執行:
+package cc.openhome; public class Hare implements Runnable { private boolean[] flags = {true, false}; private int totalStep; private int step; public Hare(int totalStep) { this.</description>
     </item>
+    
     <item>
       <title></title>
       <link>https://kuanyuce.github.io/blog/lru/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://kuanyuce.github.io/blog/lru/</guid>
-      <description>Java-GQL-POC Sample Data sample/lot_proc_time.json sample/wafer_main.json Run mvn spring-boot:run Sample Query query { getWaferByLot(lot_id: [&amp;#34;EE&amp;#34;, &amp;#34;EE&amp;#34;], tz: &amp;#34;GMT+8&amp;#34;) { lot_id wafer_id eqp_id step_seq lot_proc_time { lot_id op_start proc_start proc_end op_end load_status } } } </description>
+      <description>Java-GQL-POC Sample Data  sample/lot_proc_time.json sample/wafer_main.json  Run mvn spring-boot:run Sample Query query { getWaferByLot(lot_id: [&amp;#34;EE&amp;#34;, &amp;#34;EE&amp;#34;], tz: &amp;#34;GMT+8&amp;#34;) { lot_id wafer_id eqp_id step_seq lot_proc_time { lot_id op_start proc_start proc_end op_end load_status } } } </description>
     </item>
+    
   </channel>
 </rss>

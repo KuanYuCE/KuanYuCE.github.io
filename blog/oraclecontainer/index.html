@@ -5,7 +5,7 @@
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java Generic學習記錄">
+  <meta name="description" content="Oracle TestContainer使用教學">
   <meta name="author" content="ky">
     
   
@@ -113,89 +113,124 @@
   <div class="container pl-4 pr-4">
     <div class="row">
       <div class="col-lg-9 mx-auto">
-        <h3 class="text-center">Java Generic</h3>
+        <h3 class="text-center">Oracle TestContainer</h3>
         <div class="mb-3 text-center">
           <span>By ky</span>
           
           <span class="border-bottom border-primary px-2 mx-1"></span>
-          <span>27 January 2024</span>
+          <span>15 February 2024</span>
           
           <span class="border-bottom border-primary px-2 mx-1"></span>
           
-          <a href="/categories/programming-language"
-            class="text-primary">Programming language</a>
+          <a href="/categories/tool"
+            class="text-primary">Tool</a>
           
         </div>
         
         
         <div class="mt-1" style="border-top: 3px solid #dee2e6; height: 1rem;"></div>
         <div class="content mb-4">
-          <h3 id="靜態方法-static-method">靜態方法 Static method</h3>
-<p>要宣告靜態方法的泛型時, 記得要在static後面加上<!-- raw HTML omitted -->類別型態</p>
-<p>原因是因為泛型這機制其實是runtime的時候動態的幫你轉換型別</p>
-<p>所以實際上你在宣告(使用)的時候, 會先寫好型別,</p>
-<p>接著在new object的時候就會根據你宣告的型別做轉換</p>
-<p>但問題是靜態方法是在編譯期轉換的, 此時compiler並不知道實際的類別是什麼(不知道怎麼轉換)</p>
-<p>因此才需要在static後面接上型別告訴compiler編譯期要怎麼轉換</p>
+          <h2 id="slf4j">SLF4J</h2>
+<hr>
+<h3 id="maven-dependencies">Maven dependencies</h3>
+<p>Testcontainers is distributed as separate JARs with a common version number:</p>
+<p>A core JAR file for core functionality, generic containers and docker-compose support
+A separate JAR file for each of the specialised modules. Each module&rsquo;s documentation describes the Maven/Gradle dependency to add to your project&rsquo;s build.
+For the core library, the latest Maven/Gradle dependency is as follows:</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.testcontainers&lt;/groupId&gt;
+    &lt;artifactId&gt;testcontainers&lt;/artifactId&gt;
+    &lt;version&gt;1.19.5&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="常見問題">常見問題</h2>
+<ul>
+<li>SLF4J: Failed to load class &ldquo;org.slf4j.impl.StaticLoggerBinder&rdquo;</li>
+<li>SLF4J(W): Defaulting to no-operation (NOP) logger implementation</li>
+<li>Driver not found for mariadb database container: add relative-db jdbc dependency
+<ul>
+<li>
+<pre><code>  &lt;dependency&gt;
+      &lt;groupId&gt;org.testcontainers&lt;/groupId&gt;
+      &lt;artifactId&gt;oracle-xe&lt;/artifactId&gt;
+      &lt;version&gt;1.19.5&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+  &lt;!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;com.oracle.database.jdbc&lt;/groupId&gt;
+      &lt;artifactId&gt;ojdbc11&lt;/artifactId&gt;
+      &lt;version&gt;23.3.0.23.09&lt;/version&gt;
+  &lt;/dependency&gt;
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="jdbc-support">JDBC support</h3>
+<p>You can obtain a temporary database in one of two ways:</p>
+<p>Using a specially modified JDBC URL: after making a very simple modification to your system&rsquo;s JDBC URL string, Testcontainers will provide a disposable stand-in database that can be used without requiring modification to your application code.
+JUnit @Rule/@ClassRule: this mode starts a database inside a container before your tests and tears it down afterwards.</p>
+<h4 id="database-containers-launched-via-jdbc-url-scheme">Database containers launched via JDBC URL scheme</h4>
+<p>As long as you have Testcontainers and the appropriate JDBC driver on your classpath, you can simply modify regular JDBC connection URLs to get a fresh containerized instance of the database each time your application starts up.</p>
 <blockquote>
-<p>如果想在class的靜態方法裡上用泛型, 如何在invoke的時候, 傳入泛型類型呢?
-靜態方法在 static 關鍵字之後, 宣告泛型:
-<code>public static &lt;R&gt; Builder&lt;R&gt; builder() {...}</code></p>
+<p>We will use /// (host-less URIs) from now on to emphasis the unimportance of the host:port pair.
+From Testcontainers&rsquo; perspective, jdbc:mysql:8.0.36://localhost:3306/databasename and jdbc:mysql:8.0.36:///databasename is the same URI.</p>
 </blockquote>
-<h3 id="泛型的來源原理">泛型的來源、原理</h3>
+<h4 id="jdbc-url-examples">JDBC URL examples</h4>
 <ul>
-<li>Java 會在編譯期擦除(type erasure) 所有的泛型訊息，這樣就可以讓 JVM 使用相同的bytecode而不必新增，在 JVM Runtime 時就不存在所謂的泛型訊息</li>
+<li>Connection String: <code>jdbc:tc:questdb:6.5.3:///databasename</code></li>
 </ul>
-<h3 id="泛型副作用">泛型副作用</h3>
-<ul>
-<li>不能使用基本數據類型 (byte、char、short、int、long、double)，因為擦除後會轉換為 Object 類型</li>
-<li>不能使用 instanceof 運算符號，同樣是因為類型擦除後所帶來的副作用，會導致無法判別</li>
-<li>擦拭後都是 Object 類型，沒得判斷</li>
-<li>不能使用在靜態方法上，因為泛型創建對象時才能確定型別，但靜態方法、參數，是不用加載就可以使用 (泛型方法則可以，因為泛型方法是呼叫後才加載)</li>
-</ul>
-<pre><code class="language-java=" data-lang="java=">// 假如我们定義一个泛型類Generic
-class Generic&lt;T&gt; {
-    private T obj;
+<pre><code>package org.example;
 
-    public Generic(T o) {
-        obj = o;
-    }
-    public T getObj() {
-        return obj;
-    }
-}  
-    
-//那麼Java編譯後的bytecode的Generic相當於
-class Generic {
-    private Object obj;
 
-    public Generic(Object o) {
-        obj = o;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
+import org.junit.Test;
+import org.testcontainers.containers.OracleContainer;
+
+import java.sql.*;
+
+public class MainTest {
+    @Test
+    public void testOracleWithNoSpecifiedVersion() throws SQLException {
+        OracleContainer oracle = new OracleContainer(&quot;gvenzl/oracle-xe:21-slim-faststart&quot;)
+                .withDatabaseName(&quot;testDB&quot;)
+                .withUsername(&quot;testUser&quot;)
+                .withPassword(&quot;testPassword&quot;);
+        oracle.start();
+        performSimpleTest(&quot;jdbc:tc:oracle:21-slim-faststart:///testDB&quot;);
     }
-    public Object getObj() {
-        return obj;
+
+    private void performSimpleTest(String jdbcUrl) throws SQLException {
+        HikariDataSource ds = getDataSource(jdbcUrl, 1);
+        //Connection conn = DriverManager.getConnection(jdbcUrl, &quot;testDB&quot;, &quot;testPassword&quot;)
+        try(Connection conn = ds.getConnection()){
+            PreparedStatement table = conn.prepareStatement(&quot;CREATE TABLE testTest (name varchar(50),&quot; +
+                    &quot;age int)&quot;);
+            PreparedStatement insert = conn.prepareStatement(&quot;INSERT into testTest VALUES ('age', 5)&quot;);
+            PreparedStatement stmt = conn.prepareStatement(&quot;SELECT * FROM testTest&quot;);
+            table.executeUpdate();
+            insert.executeUpdate();
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                System.out.println(rs.getString(&quot;name&quot;) + rs.getInt(&quot;age&quot;));
+            }
+        }
+        ds.close();
+    }
+
+    private HikariDataSource getDataSource(String jdbcUrl, int poolSize) {
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setJdbcUrl(jdbcUrl);
+        hikariConfig.setUsername(&quot;testDB&quot;);
+        hikariConfig.setPassword(&quot;testPassword&quot;);
+
+        return new HikariDataSource(hikariConfig);
     }
 }
-  
-</code></pre><h3 id="java---偽泛型">Java - 偽泛型</h3>
-<ul>
-<li>
-<p>Java / kotlin 虛擬機其實內部並無泛型，並不是真正的泛型 ，JDK 5 才有泛型，為了向上兼容，才會演變成 <strong>偽泛型</strong></p>
-<blockquote>
-<p>在編譯後的字節碼中替換成原生類型(Raw Type)，並在相應的地方插入強制轉型代碼，所以對於運行期的 Java 語言來說 List<!-- raw HTML omitted --> and List<!-- raw HTML omitted --> 就是同一類別，Java 語言中的泛型實現方法稱為 類型擦除，基於這種方法實現的泛型就是偽泛型</p>
-</blockquote>
-</li>
-<li>
-<p>在泛型中並不是所有的擦除都會變成 Object 的，當泛型有限制性，Test<!-- raw HTML omitted -->，則會被擦除成 Apple</p>
-</li>
-</ul>
-<pre><code class="language-java=" data-lang="java=">List list = new ArrayList&lt;Integer\&gt;();
-List&lt;String&gt; list2 = list;
-</code></pre><blockquote>
-<p>擦除過後 ArrayList<!-- raw HTML omitted --> 轉為 Array List，List<!-- raw HTML omitted --> 轉為 List</p>
-</blockquote>
-<p><a href="https://hackmd.io/@AlienHackMd/rkGtP5TeI">參考</a></p>
-
+</code></pre>
         </div>
         <div class="mt-1" style="border-top: 3px solid #dee2e6; height: 1rem;"></div>
         
