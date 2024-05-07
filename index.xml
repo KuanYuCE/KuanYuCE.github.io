@@ -6,10 +6,19 @@
     <description>Recent content on Ky&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 15 Feb 2024 00:58:36 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Feb 2024 12:15:06 +0800</lastBuildDate>
     
 	<atom:link href="https://kuanyuce.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>K8s-Monitoring</title>
+      <link>https://kuanyuce.github.io/blog/ckamonitor/</link>
+      <pubDate>Wed, 28 Feb 2024 12:15:06 +0800</pubDate>
+      
+      <guid>https://kuanyuce.github.io/blog/ckamonitor/</guid>
+      <description>Metrics Server  one Metrics Server per k8s cluster 從每一個k8s的node和pod中取metrics並存入memory (in-memory monitor solution) 由於將metrics存在memory中, 所以沒辦法查看historical performance metrics (沒有存入disk)  Install command git clone https://github.</description>
+    </item>
     
     <item>
       <title>Oracle TestContainer</title>

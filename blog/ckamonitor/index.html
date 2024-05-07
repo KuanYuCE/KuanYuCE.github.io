@@ -5,7 +5,7 @@
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is meta description">
+  <meta name="description" content="CKA學習記錄">
   <meta name="author" content="ky">
     
   
@@ -109,159 +109,76 @@
 </header>
 <!-- /navigation -->
 
-
 <section class="section-sm">
   <div class="container pl-4 pr-4">
     <div class="row">
-      
-      <div class="col-lg-4">
-  <div class="widgets">
-    
-    <div class="widget">
-      
-      <h4 class="widget-title">關於我</h4>
-      
-      <img src="https://kuanyuce.github.io/images/profile.png" alt=""
-        class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4">
-      
-      <p>A software engineer with 3+ years of experience in Backend and Data Engineering.</p>
-      <a href="https://kuanyuce.github.io/about/" class="btn btn-outline-primary">了解更多</a>
-      
-    </div>
-    
-    <div class="widget">
-      <h4 class="widget-title">文章分類</h4>
-      <ul class="list-unstyled">
-        <li><a
-            href="/categories/cetification/">Cetification</a>
-        </li>
-        <li><a
-            href="/categories/database/">Database</a>
-        </li>
-        <li><a
-            href="/categories/programming-language/">Programming language</a>
-        </li>
-        <li><a
-            href="/categories/tool/">Tool</a>
-        </li>
-      </ul>
-    </div>
-    
-    <div class="widget">
-      <h4 class="widget-title">Tag</h4>
-      <ul class="list-unstyled">
-        <li><a
-            href="/tags/java/">Java</a>
-        </li>
-        <li><a
-            href="/tags/k8s/">K8s</a>
-        </li>
-        <li><a
-            href="/tags/tool/">Tool</a>
-        </li>
-        <li><a
-            href="/tags/%e8%87%aa%e5%ad%b8%e7%ad%86%e8%a8%98/">自學筆記</a>
-        </li>
-      </ul>
-    </div>
-    
-    <div class="widget">
-      <h4 class="widget-title">聯絡我</h4>
-      <ul class="list-inline social-links">
-        
-        <li class="list-inline-item"><a href="https://github.com/KuanYuCE"><i class="ti-github"></i></a></li>
-        
-        <li class="list-inline-item"><a href="https://www.linkedin.com/in/kuanyuchen-a8a63216b/?locale=en_US"><i class="ti-linkedin"></i></a></li>
-        
-        <li class="list-inline-item"><a href="https://www.cakeresume.com/kuan-yu-chen-301ac2"><i class="ti-id-badge"></i></a></li>
-        
-      </ul>
-    </div>
-  </div>
-</div>
-
-            
-      <div class="col-lg-8 mb-5 mb-lg-0">
-        <div class="row">
+      <div class="col-lg-9 mx-auto">
+        <h3 class="text-center">K8s-Monitoring</h3>
+        <div class="mb-3 text-center">
+          <span>By ky</span>
           
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>28 February 2024</span>
           
-          <div class="col-md-6 mb-4">
-    <article class="card">
-        
-        <div class="card-body px-0">
-        
-        <a href="https://kuanyuce.github.io/blog/lru/" class="h5 d-block my-3"></a>
-        <div class="mb-3 post-meta">
-            <span>By ky</span>
-            
-            <span class="border-bottom border-primary px-2 mx-1"></span>
-            <span>0001-01-01</span>
-            
-        </div>
-        <p class="card-text"></p>
-        <a href="https://kuanyuce.github.io/blog/lru/" class="btn btn-outline-primary">read more</a>
-        </div>
-    </article>
-</div>
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/cetification"
+            class="text-primary">Cetification</a>
           
         </div>
-      </div>
-
-
-      
-      <div class="col-12 mt-5">
-        
-
-<ul class="pagination">
-    
-    <li class="page-item">
-        <a href="/blog/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-    <a href="/blog/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
         
         
-    
-    
-    <li class="page-item"><a class="page-link" href="/blog/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/blog/page/2/">2</a></li>
-    
-    
-    <li class="page-item disabled">
-    <a  class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/blog/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
+        <div class="mt-1" style="border-top: 3px solid #dee2e6; height: 1rem;"></div>
+        <div class="content mb-4">
+          <h2 id="metrics-server">Metrics Server</h2>
+<ul>
+<li>one Metrics Server per k8s cluster</li>
+<li>從每一個k8s的node和pod中取metrics並存入memory (in-memory monitor solution)</li>
+<li>由於將metrics存在memory中, 所以沒辦法查看historical performance metrics (沒有存入disk)</li>
+</ul>
+<h3 id="install-command">Install command</h3>
+<pre><code>git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git
+cd kubernetes-metrics-server/
+kubectl create -f .
+</code></pre><ul>
+<li>接著就可以使用kubectl top pod or kubectl top node查看k8s物件狀況</li>
+</ul>
+<h3 id="metrics如何產生">Metrics如何產生?</h3>
+<ul>
+<li>透過kubelet
+<ul>
+<li>kubelet內有個subcomponent叫cAdvisor會負責retriving metrics from pods並將這些metrics expose給kubelet API</li>
+</ul>
+</li>
+</ul>
+<h3 id="補充-kubectl-create-vs-kubectl-apply">補充: kubectl create vs kubectl apply</h3>
+<ul>
+<li>
+<p>kubectl create 命令屬於 Imperative 宣告，會明確告知 k8s 要「建立」一個資源，他不會紀錄建立資源的最後狀態，真的只有幫你建立資源而已。</p>
+</li>
+<li>
+<p>kubectl apply 命令屬於 Declarative 選告，不用明確的告訴 k8s 要如何建立一個資源，也不用管現在叢集中有沒有這個資源，他就是很單純的幫你建立起你想要的資源而已。</p>
+<ul>
+<li>如果目前沒有資源，k8s 還會在你建立資源時，同時幫你建立一份快照(Snapshot)，紀錄在資源的 <code>.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration</code> 底下，你日後如果對 YAML 檔案進行更新，k8s就會去比對先前的版本與最近一次的套用版本，藉此計算出差異之處，並套用差異更新。</li>
+</ul>
+</li>
 </ul>
 
-
+        </div>
+        <div class="mt-1" style="border-top: 3px solid #dee2e6; height: 1rem;"></div>
+        
+        
+        <script src="https://utteranc.es/client.js"
+        repo="kuanyuce/KuanYuCE.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+        </script>
       </div>
     </div>
   </div>
 </section>
-
 
 
 

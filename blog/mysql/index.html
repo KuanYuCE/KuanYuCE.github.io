@@ -364,6 +364,24 @@ echo $LANG
 </li>
 </ul>
 <h2 id="mvcc">MVCC</h2>
+<p>MVCC（Multi-Version Concurrency Control，多版本並發控制）是MySQL中用於實現事務並發的機制。MVCC使用ReadView和Undo Log來實現並發控制：通過為每個事務更改資料留下紀錄（Undo Log），並用ReadView拍下數據快照來選擇要用哪個版本紀錄，從而避免了讀寫衝突（幻讀）和阻塞（加鎖）。</p>
+<p><strong>Undo Log</strong>
+Undo Log（回滾日誌）是MySQL中用於實現事務的原子性(Atomicity)的一個重要機制，【事務的ACID說明】，它不僅是MVCC重要的功能，也為事務的回滾（Rollback）提供實現：每個事務在執行修改（INSERT、UPDATE、DELETE）資料操作時，都會記錄下回滾需要的資料到Log 中，例：</p>
+<ul>
+<li>
+<p>插入一條紀錄時，就把此紀錄的primary key(cluster index)記下，之後回滾只需要將此primary key 對應的資料刪除就好；反之亦然</p>
+</li>
+<li>
+<p>在更新紀錄時，一樣記下舊資料，這樣之後回滾就把舊資料更新回去就好
+不同的操作要記錄下的內容不盡相同，更詳細的內容參考官方文件。但不論是哪一種操作紀錄的undo log都一定有一個roll_pointer跟trx_id。</p>
+</li>
+<li>
+<p><code>roll_pointer</code>：指向上一版本的undo log，所有roll_pointer連結所形成表就叫做版本鏈，透過此鏈可以找到這一條資料的所有歷史紀錄</p>
+</li>
+<li>
+<p><code>trx_id</code>：記錄此更改是哪一個事務造成的。InnoDB 會記錄每一個事務的ID，叫作transaction id，事物開始時會由InnoDB 指派，此ID 是嚴格遞增的，因此ID數字大的事務一定比數字小的事務晚開始</p>
+</li>
+</ul>
 <p>交易併發執行的時候可能產生的一致性問題:
 (trx=transacitons)</p>
 <ol>
